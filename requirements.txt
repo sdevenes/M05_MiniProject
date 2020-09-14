@@ -1,1 +1,3 @@
 requests
+sklearn
+plotly.express

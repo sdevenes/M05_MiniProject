@@ -7,6 +7,7 @@ def test1():
   x = np.arange(len(database.CLASSES))
   cm = np.dot(x.reshape(len(x),1), x.reshape(1,len(x)))
   print(cm)
+  print(database.CLASSES)
   analysis.plot_confusion_matrix(cm, database.CLASSES)
 
 def test():
@@ -40,10 +41,11 @@ def test():
   cm = analysis.get_confusion_matrix(test_predictions, test_labels)
 
   # Plot confusion matrix
-  analysis.plot_confusion_matrix(cm, database.CLASSES)
+  analysis.plot_confusion_matrix(cm, database.CLASSES, normalize=True)
 
-
+  # Plot confusion matrix (ignore other activities)
+  # analysis.plot_confusion_matrix(cm[1:, 1:], database.CLASSES[1:], normalize=True)
 
 
 if __name__ == '__main__':
-  test1()
+  test()
