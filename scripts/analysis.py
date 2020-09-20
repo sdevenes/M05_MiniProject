@@ -4,14 +4,30 @@ import numpy as np
 import itertools
 
 def get_confusion_matrix(prediction_label, true_label):
+    """Get the confusion matrix given the predicted and true labels
+
+    Args:
+        prediction_label (list): Estimated targets as returned by a classifier.
+        true_label (list): Ground truth (correct) target values.   
+    Returns:
+        numpy.ndarray: A 2D array (with a dtype of int) containing the confusion matrix.
+    Raises:
+        None
+    """
     return confusion_matrix(true_label, prediction_label)
 
-def plot_confusion_matrix(cm, classes,
-                          normalize=False,
-                          title='Confusion matrix'):
-    """
-    This function prints and plots the confusion matrix.
-    Normalization can be applied by setting `normalize=True`.
+def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'):
+    """Generate a plot of the given confusion matrix using plotly express
+
+    Args:
+        cm (numpy.ndarray): A 2D array (with a dtype of int) containing the confusion matrix.
+        classes (numpy.ndarray): A 1D array (with a dtype of str) containing the lable name for each class
+        normalize (boolean): Flag to normalize the data 
+        title (str): The title of the plot  
+    Returns:
+        None
+    Raises:
+        None
     """
     # Normalize if wanted
     if normalize:
@@ -24,5 +40,5 @@ def plot_confusion_matrix(cm, classes,
                     y=classes,
                     color_continuous_scale='Blues',
                     title=title
-                )
+                    )
     fig.show()

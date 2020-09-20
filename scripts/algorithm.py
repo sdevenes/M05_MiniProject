@@ -7,18 +7,48 @@ logger = logging.getLogger()
 
 
 def make_labels(X):
-  return np.hstack([k*np.ones(len(X[k]), dtype=int) for k in range(len(X))])
+    """Generate label array from the given data
+
+    Args:
+        X (list): A list of 1D array (with a dtype of float64) showing the input
+                  training samples, where each item of the list correspond to one class.
+    Returns:
+        numpy.ndarray: A 1D array (with a dtype of int) containing the
+        label for each sample
+    Raises:
+        None
+    """
+    return np.hstack([k*np.ones(len(X[k]), dtype=int) for k in range(len(X))])
 
 
 class Model:
   def __init__(self, nb_tree_per_forest=50, max_depth=10):
+    """Create a new ML model (Random forest classifier from scikitlearn)
+
+    Args:
+        nb_tree_per_forest: number of decision trees in the forest
+        max_depth: max depth of the trees
+    Returns:
+        None
+    Raises:
+        None
+    """
     # Create a random forest model
     self.model = RandomForestClassifier(n_estimators=nb_tree_per_forest, max_depth=max_depth,
                                         random_state=0)
 
 
   def train(self, X):
+    """Train the model using the given data
 
+    Args:
+        X (list): A list of 1D array (with a dtype of float64) showing the input training samples, 
+                  where each item of the list correspond to one class.
+    Returns:
+        None
+    Raises:
+        None
+    """
     # Get features
     X_features = np.vstack([k for k in X])
 
@@ -30,6 +60,18 @@ class Model:
 
 
   def predict(self, X):
+    """Make a prediction on the data using the trained model
+
+    Args:
+        X (list): A list of 1D array (with a dtype of float64) showing the input training samples, 
+                  where each item of the list correspond to one class.
+    Returns:
+        numpy.ndarray: A 1D array (with a dtype of int) containing the predicted
+        label for each sample
+                       
+    Raises:
+        None
+    """
     # Get features
     X_features = np.vstack([k for k in X])
 
