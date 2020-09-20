@@ -1,3 +1,5 @@
 requests
 sklearn
 plotly.express
+sphinx
+sphinx_rtd_theme

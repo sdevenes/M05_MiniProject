@@ -5,6 +5,16 @@ import zipfile
 
 # Function to download a file through http.get using requests
 def download_url(url, save_path):
+    """Download a file from the given url using http
+
+    Args:
+        url (str): The url from which the file need to be downloaded
+        save_path (str): The filename where the contents should be saved
+    Returns:
+        None
+    Raises:
+        None
+    """
     with open(save_path, "wb") as f:
             print("Downloading {} from {}".format(save_path, url))
             response = requests.get(url, stream=True)
@@ -26,17 +36,27 @@ def download_url(url, save_path):
 
 # Function to unzip files
 def unzip_file(path_to_zip_file, directory_to_extract_to):
+    """Unzip a .zip file
+
+    Args:
+        path_to_zip_file (str): The file path of the zip to extract
+        directory_to_extract_to (str): The directory path where the contents should be extracted
+    Returns:
+        None
+    Raises:
+        None
+    """
     print("Unzip files..")
     with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
         zip_ref.extractall(directory_to_extract_to)
 
 
 if __name__ == '__main__':
-  url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00506/casas-dataset.zip"
-  url_test = "https://archive.ics.uci.edu/ml/machine-learning-databases/00405/Postures.zip" # Smaller zip to test
-  save_path = "../data/casas-dataset.zip"
-  # Download zip file
-  download_url(url, save_path)
-  # Unzip it
-  unzip_file(save_path, "../data_test/")
-  print("Done")
+    url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00506/casas-dataset.zip"
+    url_test = "https://archive.ics.uci.edu/ml/machine-learning-databases/00405/Postures.zip" # Smaller zip to test
+    save_path = "../data/casas-dataset.zip"
+    # Download zip file
+    download_url(url, save_path)
+    # Unzip it
+    unzip_file(save_path, "../data_test/")
+    print("Done")
