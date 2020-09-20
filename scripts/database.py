@@ -113,4 +113,4 @@ def get(protocol, subset, classes=CLASSES, variables=VARIABLES, setname='csh101'
     retval = split_data(load(setname), subset, PROTOCOLS[protocol])
     varindex = [VARIABLES.index(k) for k in variables]
     retval = dict([(k, retval[k][:, varindex]) for k in classes])
-    return np.array([retval[k] for k in classes])
+    return np.array([retval[k] for k in classes], dtype=object)
