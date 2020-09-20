@@ -139,7 +139,8 @@ def get(protocol, subset, classes=CLASSES, variables=VARIABLES, setname='csh101'
         variables (1d-array): list of desired variables (features)
         setname (str): name of the dataset to load
     Returns:
-        numpy.ndarray: array of arrays containing the samples corresponding to 1 class in order
+        numpy.ndarray: array of ordered arrays (of size n_sample x n_features) containing the samples corresponding to
+            1 class
     Raises:
         None
     """
