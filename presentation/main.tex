@@ -31,14 +31,16 @@
 		\frametitle{Data}
 		Data is available online on the UC Irvine machine learning repository.
 		
+		Data are downloaded automatically.
+		
+		The dataset is large. We are looking for a solution to make everything work on jupyter.
+		
 		There are two evaluation protocols:
 		\begin{figure}
 			\centering
 			%\includegraphics[width=\linewidth]{idiap_web.jpg}
 			\missingfigure{Protocols illustration}
 		\end{figure}
-	
-		To change the evaluation protocoles
 	\end{frame}
 
 	\begin{frame}
@@ -46,10 +48,10 @@
 		For different experiments:
 		\begin{enumerate}
 			\item Load the training data
-			\item Create and train the model
+			\item Create and train a random forest classifier
 			\item Load the test data
 			\item Make prediction on test data
-			\item Print the confusion matrix for the model evaluation
+			\item Print the confusion matrix for the model evaluation. Confusion matrices are also available in graphs with plotly.express.
 		\end{enumerate}
 	
 		The experiments run sequentially.
