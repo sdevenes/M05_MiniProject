@@ -93,6 +93,15 @@ VARIABLES = [
 
 
 def load(setname='csh101'):
+    """Loads the dataset
+
+    Args:
+        setname (str): name of the dataset to load
+    Returns:
+        dict of str : 2d-array: a dictionary mapping the classes names to their corresponding samples (1 row = 1 sample)
+    Raises:
+        None
+    """
     data = dict([(k, []) for k in CLASSES])
     with open(os.path.join('../data', setname, '{}.ann.features.csv'.format(setname)), 'rt') as f:
         reader = csv.reader(f, delimiter=',')
@@ -105,11 +114,36 @@ def load(setname='csh101'):
 
 
 def split_data(data, subset, splits):
+    """Splits the data set
+
+    Args:
+        data (dict of str : 2d-array): dataset to split
+        subset (str): subset to extract (train, validation or test)
+        splits (dict of str : tuple): a dictionary mapping the subsets to their range (from 0.0 to 1.0)
+    Returns:
+        dict of str : 2d-array: a dictionary mapping the classes names to their corresponding samples (1 row = 1 sample)
+    Raises:
+        None
+    """
     return dict([(k, data[k][range(int(splits[subset][0] * data[k].shape[0]),
                                    int(splits[subset][1] * data[k].shape[0]))]) for k in data])
 
 
 def get(protocol, subset, classes=CLASSES, variables=VARIABLES, setname='csh101'):
+    """Get the desired subset
+
+    Args:
+        protocol (str): protocol to use
+        subset (str): subset to extract (train, validation or test)
+        classes (1d-array): list of desired classes
+        variables (1d-array): list of desired variables (features)
+        setname (str): name of the dataset to load
+    Returns:
+        numpy.ndarray: array of ordered arrays (of size n_sample x n_features) containing the samples corresponding to
+            1 class
+    Raises:
+        None
+    """
     retval = split_data(load(setname), subset, PROTOCOLS[protocol])
     varindex = [VARIABLES.index(k) for k in variables]
     retval = dict([(k, retval[k][:, varindex]) for k in classes])
