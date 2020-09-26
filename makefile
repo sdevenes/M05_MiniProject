@@ -10,7 +10,7 @@ loadData:
 
 .PHONY: unitTests
 unitTests: cleanTests
-	nosetests -v "$(TESTDIR)/test.py"
+	nosetests --nocapture -v "$(TESTDIR)/test.py"
 
 .PHONY: cleanTests
 cleanTests:

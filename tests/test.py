@@ -2,12 +2,12 @@ import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../scripts/")
 
-import algorithm
-import database
-import analysis
 import download_data
 import zipfile
 import requests
+
+import algorithm
+import analysis
 import numpy as np
 
 import nose.tools
@@ -41,3 +41,17 @@ def test_download_url():
     save_path = base_path + "/output/test_dl.zip"
     download_data.download_url(url, save_path)
     nose.tools.ok_(os.path.isfile(save_path), msg="Dataset not correctly downloaded")
+
+def test_make_labels():
+    X = [np.array([0, 1, 0]), np.array([2, 3]), np.array([7, 4, 6, 9])]
+    labels = algorithm.make_labels(X)
+    ref = np.array([0,0,0,1,1,2,2,2,2])
+    nose.tools.ok_((labels==ref).all(), msg="{} != {}".format(labels,ref))
+
+def test_get_confusion_matrix():
+    prediction = [1,2,3,1,2,2,3]
+    true_val = [1,2,3,1,2,3,2]
+    cm = analysis.get_confusion_matrix(prediction, true_val)
+    ref = np.array([[2, 0, 0],[0, 2, 1],[0, 1, 1]])
+    nose.tools.ok_((cm==ref).all(), msg="{} != {}".format(cm,ref))
+
