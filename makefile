@@ -8,10 +8,10 @@ default:
 loadData:
 	# todo
 
-.PHONY: unitests
-unitests: cleantests
+.PHONY: unitTests
+unitTests: cleanTests
 	nosetests -v "$(TESTDIR)/test.py"
 
-.PHONY: cleantests
-cleantests:
+.PHONY: cleanTests
+cleanTests:
 	rm -rf "$(TESTDIR)/output"
