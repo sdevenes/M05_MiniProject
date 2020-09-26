@@ -1,7 +1,6 @@
 requests
 scikit-learn
-plotly
-plotly_express
+#plotly plotly_express==0.4.1
 sphinx
 sphinx_rtd_theme
 nose
