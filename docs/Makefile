@@ -37,5 +37,6 @@ html: gendocs
 	mkdir -p $(OUTPUTDIR)/html/
 	cp -R $(BUILDDIR)/html/* $(OUTPUTDIR)
 	@echo "html files copied; the html files are in $(OUTPUTDIR)."
+	touch $(OUTPUTDIR)/.nojekyll
 
 

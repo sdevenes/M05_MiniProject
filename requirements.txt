@@ -1,5 +1,6 @@
 requests
-sklearn
-plotly.express
+scikit-learn
+plotly_express==0.4.1
 sphinx
 sphinx_rtd_theme
+nose

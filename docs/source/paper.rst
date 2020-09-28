@@ -1,7 +1,7 @@
-test module
-===========
+paper module
+============
 
-.. automodule:: test
+.. automodule:: paper
    :members:
    :undoc-members:
    :show-inheritance:
