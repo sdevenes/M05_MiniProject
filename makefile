@@ -15,3 +15,8 @@ unitTests: cleanTests
 .PHONY: cleanTests
 cleanTests:
 	rm -rf "$(TESTDIR)/output"
+
+.PHONY: doc
+doc:
+	$(MAKE) -C docs clean
+	$(MAKE) -C docs html

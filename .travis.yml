@@ -19,5 +19,14 @@ install:
 script:
   # Run phase of our CI pipeline
   - make unitTests
-  # - make doc
+  - make doc
 
+deploy:
+  - provider: pages:git
+    verbose: true
+    edge: true
+    token: $GITHUB_TOKEN
+    local_dir: ./public/
+    on:
+        branch: master
+        condition: $TRAVIS_PYTHON_VERSION = 3.8

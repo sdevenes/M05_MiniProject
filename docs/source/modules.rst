@@ -8,4 +8,4 @@ scripts
    analysis
    database
    download_data
-   test
+   paper
