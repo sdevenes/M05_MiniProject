@@ -16,14 +16,15 @@ def get_confusion_matrix(prediction_label, true_label):
     """
     return confusion_matrix(true_label, prediction_label)
 
-def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'):
+def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', file_name="graph"):
     """Generate a plot of the given confusion matrix using plotly express
 
     Args:
         cm (numpy.ndarray): A 2D array (with a dtype of int) containing the confusion matrix.
         classes (numpy.ndarray): A 1D array (with a dtype of str) containing the lable name for each class
         normalize (boolean): Flag to normalize the data 
-        title (str): The title of the plot  
+        title (str): The title of the plot
+        file_name (str): File name to export the graph
     Returns:
         None
     Raises:
@@ -41,4 +42,6 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
                     color_continuous_scale='Blues',
                     title=title
                     )
-    fig.show()
+    #fig.show()
+    # Export graph
+    fig.write_html("{}.html".format(file_name))

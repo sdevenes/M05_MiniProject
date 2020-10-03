@@ -11,4 +11,9 @@
 
 This mini project was developed during the M05 course "reproducibility and open science"
 taught by Idiap as part of the AI master 2020-2021.
- 
+
+.. topic:: Working hypothesis
+
+    It is possible to perform human activity recognition using data from continuous ambient sensors
+
+
