@@ -18,8 +18,14 @@ install:
 
 script:
   # Run phase of our CI pipeline
-  - make unitTests
-  - make doc
+  # Run unitTests
+  - nosetests --nocapture -v tests/test.py
+
+  # Generate rst files from docstring
+  - sphinx-apidoc -fMeT -o docs/source/api scripts
+  # Build documentation
+  - sphinx-build docs/source docs/build
+  - touch sphinx/.nojekyll
 
 deploy:
   - provider: pages:git

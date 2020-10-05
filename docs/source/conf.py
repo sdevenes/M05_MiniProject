@@ -18,11 +18,11 @@ sys.path.insert(0, os.path.abspath('../../scripts'))
 
 # -- Project information -----------------------------------------------------
 AUTHOR='Spano Amara, Devènes Steve'
-VERSION = "0.1.0"  # subprocess.check_output(["git", "describe"]).decode('UTF-8')
+VERSION = "0.2.0"
 
 project = 'M05 miniProject'
-copyright = '2020'
-author = 'Spano Amara, Devènes Steve'
+import time
+copyright = u"%s" % time.strftime("%Y")
 
 author = AUTHOR
 
@@ -37,9 +37,11 @@ release = VERSION
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    #'sphinx.ext.autodoc',
+    "sphinx.ext.doctest",
     'sphinx.ext.napoleon',
-    'sphinx.ext.intersphinx'
+    'sphinx.ext.intersphinx',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
 ]
 
 intersphinx_mapping = dict(
@@ -48,11 +50,14 @@ intersphinx_mapping = dict(
     scipy=("https://docs.scipy.org/doc/scipy/reference", None)
 )
 
+# Generates auto-summary automatically
+autosummary_generate = True
+
 # Also document special classes like __init__
 autoclass_content = 'both'
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -60,7 +65,7 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'pastie'
+pygments_style = 'sphinx'
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -78,7 +83,7 @@ html_theme = 'sphinx_rtd_theme'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_static']
 
 
 # -- Extension configuration -------------------------------------------------
@@ -101,15 +106,6 @@ html_theme_options = {
     'includehidden': True,
     'titles_only': False,
 }
-
-# html_context = {
-#     "display_gitlab": True,
-#     "gitlab_user": "",
-#     "gitlab_repo": "",
-#     "gitlab_version": "master",
-#     "conf_py_path": "/docs/source/",
-#     "gitlab_host": "",
-#      }
 
 # html_logo = '../../img/****.svg'
 html_title = 'M05 MiniProject docs'
