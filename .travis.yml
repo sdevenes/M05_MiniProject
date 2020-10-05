@@ -25,7 +25,7 @@ script:
   - sphinx-apidoc -fMeT -o docs/source/api scripts
   # Build documentation
   - sphinx-build docs/source docs/build
-  - touch sphinx/.nojekyll
+  - touch docs/build/.nojekyll
 
 deploy:
   - provider: pages:git
