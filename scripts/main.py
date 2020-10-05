@@ -6,13 +6,13 @@ import analysis
 import numpy as np
 
 
-def base_test(protocol, variables, setname='csh101', nb_tree_per_forest=50, max_depth=10):
+def base_test(protocol, variables, filepath, nb_tree_per_forest=50, max_depth=10):
     """Basic test for the random forest classifier
 
     Args:
         protocol (str): protocol to use
         variables (1d-array): list of desired variables (features)
-        setname (str): name of the dataset to load
+        filepath (str): path to the file containing the dataset to load
         nb_tree_per_forest: number of decision trees in the forest
         max_depth: max depth of the trees
     Returns:
@@ -20,18 +20,12 @@ def base_test(protocol, variables, setname='csh101', nb_tree_per_forest=50, max_
     Raises:
         None
     """
-    # get train data
-    train = database.get(protocol, 'train', database.CLASSES, variables, setname)
-    # make and train model
+    x_train, y_train = database.get(protocol, 'train', database.CLASSES, variables, filepath)
     model = algorithm.Model(nb_tree_per_forest, max_depth)
-    model.train(train)
-    # get test data
-    test = database.get(protocol, 'test', database.CLASSES, variables, setname)
-    test_labels = algorithm.make_labels(test).astype(int)
-    # make prediction on test
-    test_predictions = model.predict(test)
-    # get and return confusion matrix
-    cm = analysis.get_confusion_matrix(test_predictions, test_labels)
+    model.train(x_train, y_train)
+    x_test, y_test = database.get(protocol, 'test', database.CLASSES, variables, filepath)
+    test_predictions = model.predict(x_test)
+    cm = analysis.get_confusion_matrix(test_predictions, y_test)
     return cm
 
 
@@ -51,11 +45,12 @@ def pretty_confusion_matrix(cm):
     return table
 
 
-def test_impact_nb_trees(tabnum):
+def test_impact_nb_trees(tabnum, filepath):
     """Evaluates and print the impact of the number of trees per forest on the classifiers performance
 
     Args:
         tabnum (int): first confusion matrix numbering
+        filepath (str): path to the file containing the dataset to load
     Returns:
         None
     Raises:
@@ -70,14 +65,16 @@ def test_impact_nb_trees(tabnum):
                 protocol=p,
                 nb_trees=nb_tree_per_forest)
             )
-            cm = base_test(p, database.VARIABLES, nb_tree_per_forest=nb_tree_per_forest)
+            cm = base_test(p, database.VARIABLES, nb_tree_per_forest=nb_tree_per_forest, filepath=filepath)
             print(pretty_confusion_matrix(cm))
 
-def test_impact_tree_depth(tabnum):
+
+def test_impact_tree_depth(tabnum, filepath):
     """Evaluates and print the impact of the trees depth on the classifiers performance
 
     Args:
         tabnum (int): first confusion matrix numbering
+        filepath (str): path to the file containing the dataset to load
     Returns:
         None
     Raises:
@@ -87,16 +84,17 @@ def test_impact_tree_depth(tabnum):
     print("\nImpact of trees maximum depth")
     for n, p in enumerate(database.PROTOCOLS):
         for m, max_depth in enumerate(depths):
-            print("\nTable {table_number}: Confusion matrix with trees maximum depth of {max_depth} for Protocol `{protocol}`".format(
-                table_number=(n * len(depths)) + m + tabnum,
-                protocol=p,
-                max_depth=max_depth)
+            print(
+                "\nTable {table_number}: Confusion matrix with trees maximum depth of {max_depth} for Protocol `{protocol}`".format(
+                    table_number=(n * len(depths)) + m + tabnum,
+                    protocol=p,
+                    max_depth=max_depth)
             )
-            cm = base_test(p, database.VARIABLES, max_depth=max_depth, nb_tree_per_forest=10)
+            cm = base_test(p, database.VARIABLES, max_depth=max_depth, nb_tree_per_forest=10, filepath=filepath)
             print(pretty_confusion_matrix(cm))
 
 
 if __name__ == '__main__':
     print("Main script for Human Activity Recognition with Random Forest classifier")
-    test_impact_nb_trees(1)
-    test_impact_tree_depth(7)
+    test_impact_nb_trees(1, filepath='../data/csh101/csh101.ann.features.csv')
+    test_impact_tree_depth(7, filepath='../data/csh101/csh101.ann.features.csv')
