@@ -51,13 +51,6 @@ def test_download_url():
     nose.tools.ok_(os.path.isfile(save_path), msg="Dataset not correctly downloaded")
 
 
-def test_make_labels():
-    X = [np.array([0, 1, 0]), np.array([2, 3]), np.array([7, 4, 6, 9])]
-    labels = algorithm.make_labels(X)
-    ref = np.array([0, 0, 0, 1, 1, 2, 2, 2, 2])
-    nose.tools.ok_((labels == ref).all(), msg="{} != {}".format(labels, ref))
-
-
 def test_get_confusion_matrix():
     prediction = [1, 2, 3, 1, 2, 2, 3]
     true_val = [1, 2, 3, 1, 2, 3, 2]
