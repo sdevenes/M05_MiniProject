@@ -32,7 +32,7 @@ deploy:
     verbose: true
     edge: true
     token: $GITHUB_TOKEN
-    local_dir: ./public/
+    local_dir: ./docs/build
     on:
         branch: master
         condition: $TRAVIS_PYTHON_VERSION = 3.8
