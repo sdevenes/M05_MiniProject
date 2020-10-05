@@ -39,7 +39,14 @@ release = VERSION
 extensions = [
     #'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
+    'sphinx.ext.intersphinx'
 ]
+
+intersphinx_mapping = dict(
+    python=('https://docs.python.org/3', None),
+    numpy=("https://numpy.org/doc/stable/", None),
+    scipy=("https://docs.scipy.org/doc/scipy/reference", None)
+)
 
 # Also document special classes like __init__
 autoclass_content = 'both'
