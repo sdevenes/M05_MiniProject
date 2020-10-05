@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 import numpy as np
 import csv
-import os
+from sklearn.model_selection import train_test_split
 
 PROTOCOLS = {
-    'proto1': {'train': (0, 0.6), 'validation': (0.6, 0.8), 'test': (0.8, 1)},
-    'proto2': {'train': (0.4, 1), 'validation': (0, 0.2), 'test': (0.2, 0.4)},
+    'proto1': {'train': 0.8, 'test': 0.2, 'random': 1},
+    'proto2': {'train': 0.8, 'test': 0.2, 'random': 2},
 }
 
 SUBSETS = [
@@ -92,59 +92,71 @@ VARIABLES = [
 ]
 
 
-def load(setname='csh101'):
+def load(filepath='./data/csh101/csh101.ann.features.csv'):
     """Loads the dataset
 
     Args:
-        setname (str): name of the dataset to load
+        filepath (str): path to the file containing the dataset to load
     Returns:
-        dict of str : 2d-array: a dictionary mapping the classes names to their corresponding samples (1 row = 1 sample)
+       x (numpy.ndarray):A NxM 2D-array where each row corresponds to a sample and each column to a feature
+       y (numpy.ndarray): A 1D-array of length N, where each element corresponds to a sample label
     Raises:
         None
     """
-    data = dict([(k, []) for k in CLASSES])
-    with open(os.path.join('../data', setname, '{}.ann.features.csv'.format(setname)), 'rt') as f:
+    x = []
+    y = []
+    with open(filepath, 'rt') as f:
         reader = csv.reader(f, delimiter=',')
         for k, row in enumerate(reader):
-            if not k: continue
-            data[row[-1]].append(np.array([z for z in row[:-1]]))
-    for k in CLASSES:
-        data[k] = np.vstack(data[k])
-    return data
+            if not k:
+                continue
+            x.append(row[:-1])
+            y.append(row[-1])
+    return np.array(x), np.array(y)
 
 
-def split_data(data, subset, splits):
+def split_data(x, y, subset, splits):
     """Splits the data set
 
     Args:
-        data (dict of str : 2d-array): dataset to split
-        subset (str): subset to extract (train, validation or test)
-        splits (dict of str : tuple): a dictionary mapping the subsets to their range (from 0.0 to 1.0)
+        x (numpy.ndarray):A NxM 2D-array where each row corresponds to a sample and each column to a feature
+        y (numpy.ndarray): A 1D-array of length N, where each element corresponds to a sample label
+        subset (str): subset to extract (train or test)
+        splits (dict): a dictionary mapping the subsets to their dataset proportion and the random state to use for splitting
     Returns:
-        dict of str : 2d-array: a dictionary mapping the classes names to their corresponding samples (1 row = 1 sample)
+        x_split (numpy.ndarray):A PxM 2D-array containing only a subset of samples
+        y_split (numpy.ndarray): A 1D-array of length P containing only the labels corresponding to the subset x_split
     Raises:
         None
     """
-    return dict([(k, data[k][range(int(splits[subset][0] * data[k].shape[0]),
-                                   int(splits[subset][1] * data[k].shape[0]))]) for k in data])
+    x_train, x_test, y_train, y_test = train_test_split(x, y,
+                                                        test_size=splits['test'],
+                                                        train_size=splits['train'],
+                                                        random_state=splits['random'],
+                                                        stratify=y)
+    (x_split, y_split) = (x_train, y_train) if subset == 'train' else (x_test, y_test)
+    return x_split, y_split
 
 
-def get(protocol, subset, classes=CLASSES, variables=VARIABLES, setname='csh101'):
+def get(protocol, subset, classes=CLASSES, variables=VARIABLES, filepath='./data/csh101/csh101.ann.features.csv'):
     """Get the desired subset
 
     Args:
         protocol (str): protocol to use
-        subset (str): subset to extract (train, validation or test)
-        classes (1d-array): list of desired classes
-        variables (1d-array): list of desired variables (features)
-        setname (str): name of the dataset to load
+        subset (str): subset to extract (train or test)
+        classes (list): list of desired classes
+        variables (list): list of desired variables (features)
+        filepath (str): path to the file containing the dataset to load
     Returns:
-        numpy.ndarray: array of ordered arrays (of size n_sample x n_features) containing the samples corresponding to
-            1 class
+        ret_x (numpy.ndarray):A PxQ 2D-array containing only the desired subset of samples with the Q desired features
+        ret_y (numpy.ndarray): A 1D-array of length P containing only the labels corresponding to the subset ret_x
     Raises:
         None
     """
-    retval = split_data(load(setname), subset, PROTOCOLS[protocol])
-    varindex = [VARIABLES.index(k) for k in variables]
-    retval = dict([(k, retval[k][:, varindex]) for k in classes])
-    return np.array([retval[k] for k in classes], dtype=object)
+    x, y = load(filepath)
+    x_split, y_split = split_data(x, y, subset, PROTOCOLS[protocol])
+    var_index = [VARIABLES.index(k) for k in variables]
+    classes_condition = np.isin(y_split, classes)
+    ret_x = x_split[classes_condition][:, var_index]
+    ret_y = y_split[classes_condition]
+    return ret_x, ret_y
