@@ -1,21 +1,15 @@
 Welcome to M05 miniProject's documentation!
 ===========================================
 
+Documentation
+-------------
+
 .. toctree::
-   :maxdepth: 2
-   :hidden:
-   :caption: Contents
-   :glob:
 
+   installation
+   guide
+   troubleshooting
    modules
-
-Getting started
----------------
-
-You can view the content as a:
-
-* `Webpage <https://put/the/correct/link/here/>`_
-* `pdf <https://is/there/a/pdf?.pdf>`_
 
 
 Authors
