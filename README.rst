@@ -1,5 +1,7 @@
 .. image:: https://travis-ci.org/sdevenes/M05_MiniProject.svg?branch=master
    :target: https://travis-ci.org/github/sdevenes/M05_MiniProject
+.. image:: https://coveralls.io/repos/github/sdevenes/M05_MiniProject/badge.svg?branch=master
+   :target: https://coveralls.io/github/sdevenes/M05_MiniProject?branch=master
 .. image:: https://img.shields.io/badge/docs-latest-orange.svg
    :target: https://sdevenes.github.io/M05_MiniProject/index.html
 .. image:: https://img.shields.io/badge/github-project-0000c0.svg
