@@ -60,11 +60,12 @@ def test_get_confusion_matrix():
 
 
 def test_load():
-    default_data_len = 321428
+    datapath = base_path + '/inputs/test_set.csv'
+    data_len = 1225
     num_columns = len(database.VARIABLES)
-    expected_x_shape = (default_data_len, num_columns)
-    expected_y_shape = (default_data_len,)
-    x, y = database.load('../data/csh101/csh101.ann.features.csv')
+    expected_x_shape = (data_len, num_columns)
+    expected_y_shape = (data_len,)
+    x, y = database.load(datapath)
     nose.tools.ok_(x.shape == expected_x_shape,
                    msg='x.shape != {}'.format(expected_x_shape))
     nose.tools.ok_(y.shape == expected_y_shape,
@@ -72,12 +73,13 @@ def test_load():
 
 
 def test_split_data_test():
-    default_data_len = 321428
+    datapath = base_path + '/inputs/test_set.csv'
+    data_len = 1225
     num_columns = len(database.VARIABLES)
     protocol = 'proto1'
     subset = 'test'
-    expected_test_len = np.ceil(database.PROTOCOLS[protocol][subset] * default_data_len)
-    x, y = database.load('../data/csh101/csh101.ann.features.csv')
+    expected_test_len = np.ceil(database.PROTOCOLS[protocol][subset] * data_len)
+    x, y = database.load(datapath)
     x_test, y_test = database.split_data(x, y, subset, database.PROTOCOLS[protocol])
     nose.tools.ok_(x_test.shape[0] == expected_test_len,
                    msg='x_test.shape[0] != {}'.format(expected_test_len))
@@ -86,11 +88,12 @@ def test_split_data_test():
 
 
 def test_split_data_train():
-    default_data_len = 321428
+    datapath = base_path + '/inputs/test_set.csv'
+    data_len = 1225
     protocol = 'proto1'
     subset = 'train'
-    expected_train_len = np.floor(database.PROTOCOLS[protocol][subset] * default_data_len)
-    x, y = database.load('../data/csh101/csh101.ann.features.csv')
+    expected_train_len = np.floor(database.PROTOCOLS[protocol][subset] * data_len)
+    x, y = database.load(datapath)
     x_train, y_train = database.split_data(x, y, subset, database.PROTOCOLS[protocol])
     nose.tools.ok_(x_train.shape[0] == expected_train_len,
                    msg='x_test.shape[0] != {}'.format(expected_train_len))
@@ -99,14 +102,15 @@ def test_split_data_train():
 
 
 def test_get_default():
+    datapath = base_path + '/inputs/test_set.csv'
     protocol = 'proto1'
     subset = 'test'
-    default_data_len = 321428
+    data_len = 1225
     num_columns = len(database.VARIABLES)
-    expected_len = np.ceil(database.PROTOCOLS[protocol][subset] * default_data_len)
+    expected_len = np.ceil(database.PROTOCOLS[protocol][subset] * data_len)
     expected_x_shape = (expected_len, num_columns)
     expected_y_shape = (expected_len,)
-    x, y = database.get(protocol, subset, filepath='../data/csh101/csh101.ann.features.csv')
+    x, y = database.get(protocol, subset, filepath=datapath)
     nose.tools.ok_(x.shape == expected_x_shape,
                    msg='x.shape != {}'.format(expected_x_shape))
     nose.tools.ok_(y.shape == expected_y_shape,
@@ -114,22 +118,24 @@ def test_get_default():
 
 
 def test_get_limited_variables():
+    datapath = base_path + '/inputs/test_set.csv'
     protocol = 'proto1'
     subset = 'test'
     variables = ['lastSensorEventHours', 'complexity']
     variables_indices = [0, 10]
-    x_full, y_full = database.get(protocol, subset, filepath='../data/csh101/csh101.ann.features.csv')
-    x, y = database.get(protocol, subset, variables=variables, filepath='../data/csh101/csh101.ann.features.csv')
+    x_full, y_full = database.get(protocol, subset, filepath=datapath)
+    x, y = database.get(protocol, subset, variables=variables, filepath=datapath)
     nose.tools.ok_(np.array_equal(x, x_full[:, variables_indices]),
                    msg="x != x_full[:, ('lastSensorEventHours', 'complexity')]")
 
 
 def test_get_limited_classes():
+    datapath = base_path + '/inputs/test_set.csv'
     protocol = 'proto1'
     subset = 'test'
     classes = ['Other_Activity', 'Work_At_Table']
     other_classes = database.CLASSES[1:-1]
-    x, y = database.get(protocol, subset, classes=classes, filepath='../data/csh101/csh101.ann.features.csv')
+    x, y = database.get(protocol, subset, classes=classes, filepath=datapath)
     nose.tools.ok_(not np.isin(y, other_classes).any(),
                    msg='y contains other classes than: {}'.format(classes))
     nose.tools.ok_(x.shape[0] == y.shape[0],
