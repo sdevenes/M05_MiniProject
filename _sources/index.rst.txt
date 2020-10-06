@@ -1,5 +1,5 @@
-Welcome to M05 miniProject's documentation!
-===========================================
+Human Activity Recognition from Continuous Ambient Sensor Data
+==============================================================
 
 Documentation
 -------------
@@ -9,7 +9,7 @@ Documentation
    installation
    guide
    troubleshooting
-   modules
+   api
 
 
 Authors
