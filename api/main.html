@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>paper module &mdash; M05 MiniProject docs</title>
+  <title>main module &mdash; M05 MiniProject docs</title>
   
 
   
@@ -96,9 +96,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="algorithm.html">algorithm module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="analysis.html">analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="database.html">database module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download_data.html">download_data module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">paper module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">main module</a></li>
 </ul>
 </li>
 </ul>
@@ -148,13 +149,13 @@
         
           <li><a href="../api.html">API Documentation</a> &raquo;</li>
         
-      <li>paper module</li>
+      <li>main module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/paper.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/main.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,18 +168,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-paper">
-<span id="paper-module"></span><h1>paper module<a class="headerlink" href="#module-paper" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-main">
+<span id="main-module"></span><h1>main module<a class="headerlink" href="#module-main" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="paper.base_test">
-<code class="sig-prename descclassname">paper.</code><code class="sig-name descname">base_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">protocol</span></em>, <em class="sig-param"><span class="n">variables</span></em>, <em class="sig-param"><span class="n">setname</span><span class="o">=</span><span class="default_value">'csh101'</span></em>, <em class="sig-param"><span class="n">nb_tree_per_forest</span><span class="o">=</span><span class="default_value">50</span></em>, <em class="sig-param"><span class="n">max_depth</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paper.base_test" title="Permalink to this definition">¶</a></dt>
+<dt id="main.base_experiment">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">base_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">protocol</span></em>, <em class="sig-param"><span class="n">variables</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">nb_tree_per_forest</span><span class="o">=</span><span class="default_value">50</span></em>, <em class="sig-param"><span class="n">max_depth</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.base_experiment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Basic test for the random forest classifier</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>protocol</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – protocol to use</p></li>
+<li><p><strong>protocol</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – protocol to use</p></li>
 <li><p><strong>variables</strong> (<em>1d-array</em>) – list of desired variables (features)</p></li>
-<li><p><strong>setname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – name of the dataset to load</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – path to the file containing the dataset to load</p></li>
 <li><p><strong>nb_tree_per_forest</strong> – number of decision trees in the forest</p></li>
 <li><p><strong>max_depth</strong> – max depth of the trees</p></li>
 </ul>
@@ -196,8 +197,49 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="paper.pretty_confusion_matrix">
-<code class="sig-prename descclassname">paper.</code><code class="sig-name descname">pretty_confusion_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paper.pretty_confusion_matrix" title="Permalink to this definition">¶</a></dt>
+<dt id="main.experiment_impact_nb_trees">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">experiment_impact_nb_trees</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tabnum</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">nb_trees</span></em>, <em class="sig-param"><span class="n">max_depth</span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.experiment_impact_nb_trees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates and print the impact of the number of trees per forest on the classifiers performance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – first confusion matrix numbering</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – path to the file containing the dataset to load</p></li>
+<li><p><strong>nb_trees</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – list of number of trees to evaluate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="main.experiment_impact_tree_depth">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">experiment_impact_tree_depth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tabnum</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">nb_trees</span></em>, <em class="sig-param"><span class="n">max_depths</span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.experiment_impact_tree_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates and print the impact of the trees depth on the classifiers performance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – first confusion matrix numbering</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – path to the file containing the dataset to load</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="main.pretty_confusion_matrix">
+<code class="sig-prename descclassname">main.</code><code class="sig-name descname">pretty_confusion_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.pretty_confusion_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds labels to confusion matrix</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -207,44 +249,10 @@
 <dd class="field-even"><p>nicely formatted confusion matrix for printing</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><strong>None</strong> – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="paper.test_impact_nb_trees">
-<code class="sig-prename descclassname">paper.</code><code class="sig-name descname">test_impact_nb_trees</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tabnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paper.test_impact_nb_trees" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluates and print the impact of the number of trees per forest on the classifiers performance</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>tabnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – first confusion matrix numbering</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>None</p>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>None</strong> – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="paper.test_impact_tree_depth">
-<code class="sig-prename descclassname">paper.</code><code class="sig-name descname">test_impact_tree_depth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tabnum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paper.test_impact_tree_depth" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluates and print the impact of the trees depth on the classifiers performance</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>tabnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – first confusion matrix numbering</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>None</p>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 </dl>
 </dd></dl>

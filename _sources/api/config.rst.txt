@@ -1,7 +1,7 @@
-paper module
-============
+config module
+=============
 
-.. automodule:: paper
+.. automodule:: config
    :members:
    :undoc-members:
    :show-inheritance:
