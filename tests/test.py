@@ -2,17 +2,10 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../scripts/")
-
-import download_data
+from scripts import algorithm, database, analysis, download_data
 import zipfile
 import requests
-
-import algorithm
-import analysis
 import numpy as np
-
-import database
-
 import nose.tools
 
 # Get the path of this file to easily build relative path
