@@ -3,8 +3,9 @@ data/
 
 ### Sphinx Doc ###
 docs/build/*
-public/*
+docs/source/api/
 
 ### Python execution ###
 scripts/__pycache__/
 tests/output/
+

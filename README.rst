@@ -12,8 +12,21 @@
 This mini project was developed during the M05 course "reproducibility and open science"
 taught by Idiap as part of the AI master 2020-2021.
 
-.. topic:: Working hypothesis
+Working hypothesis
+------------------
 
-    It is possible to perform human activity recognition using data from continuous ambient sensors
+It is possible to perform human activity recognition using data from continuous ambient sensors
 
+Dataset
+-------
 
+The dataset that was used for this project is the following: https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+from+Continuous+Ambient+Sensor+Data.
+It represents ambient data collected in 30 homes with volunteer residents.
+Data are collected continuously while residents perform their normal routines.
+It contains 36 features measured plus one output for the classification label of the activity, for
+a total of 13956534 entries.
+
+Machine learning
+----------------
+
+Random forest classifiers from scikit-learn were used to obtains the results presented in this project.
