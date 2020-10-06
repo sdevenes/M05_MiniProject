@@ -6,6 +6,7 @@
 \author{Steve Devènes, Amara Spano}
 \institute{Unidistance}
 \date{\today}
+\usetheme{Madrid}
 
 \begin{document}
 
@@ -13,10 +14,10 @@
 		\titlepage
 	\end{frame}
 
-	\begin{frame}
-		\frametitle{Outline}
-		\tableofcontents
-	\end{frame}
+	% \begin{frame}
+	% 	\frametitle{Outline}
+	% 	\tableofcontents
+	% \end{frame}
 
 %	\begin{frame}
 %		\frametitle{Selected project}
@@ -24,7 +25,7 @@
 
 	\begin{frame}
 		\frametitle{Working hypothesis}
-		It possible to perform human activity recognition from continuous ambient sensor data
+		It's possible to perform human activity recognition from continuous ambient sensor data.
 	\end{frame}
 
 	\begin{frame}
@@ -33,7 +34,8 @@
 
 		Data are downloaded automatically.
 
-		The dataset is large. We are looking for a solution to make everything work on jupyter.
+		The dataset is large, it contains 36 features measured plus one output for the classification label
+		of the activity (35 differents activities), for a total of 13956534 entries.
 
 		There are two evaluation protocols:
 		\begin{figure}
@@ -68,6 +70,11 @@
 			\item Create 1 branch per feature named \textit{feature/feature\_name}
 			\item When the feature is complete, do a pull request with the other as a reviewer
 		\end{itemize}
+
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{img/git_tree.png}
+		\end{figure}
 	\end{frame}
 
 %	\begin{frame}
@@ -79,21 +86,31 @@
 %		\end{figure}
 %	\end{frame}
 
+	\begin{frame}
+		\frametitle{Unit Testing and CI}
+		The majority of the functions in the code are covered by unit-tests,
+		this was done using Nose python package.
+		(percentage of coverage ?)
 
-%	\begin{frame}
-%		\frametitle{Unit Testing and CI}
-%	\end{frame}
+		These tests are run at each commit through travis CI:
+		\url{https://travis-ci.org/github/sdevenes/M05_MiniProject}
+		Procuring a quick detection of bugs and errors that could appears
+		during the project development.
+	\end{frame}
 
 	\begin{frame}
 		\frametitle{Documentation}
-		Each function is commented with a docstring.
+		Each function is commented with a docstring. The documentation is
+		then build automatically in the CI using Sphinx at each new commit on the
+		master branch.
 
-		We plan to use the documentation generator Sphinx.
+		Doc available here: \url{https://sdevenes.github.io/M05_MiniProject/index.html}
 	\end{frame}
 
-%	\begin{frame}
-%		\frametitle{Packaging}
-%	\end{frame}
+	\begin{frame}
+		\frametitle{Packaging and Deployment}
+		To do
+	\end{frame}
 
 %	\begin{frame}
 %		\frametitle{Final remarks}
