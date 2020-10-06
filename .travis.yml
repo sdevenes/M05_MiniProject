@@ -19,13 +19,15 @@ install:
 script:
   # Run phase of our CI pipeline
   # Run unitTests
-  - nosetests --nocapture -v tests/test.py
-
+  - nosetests --nocapture -v tests/test.py --with-coverage --cover-package=scripts
   # Generate rst files from docstring
   - sphinx-apidoc -fMeT -o docs/source/api scripts
   # Build documentation
   - sphinx-build docs/source docs/build
   - touch docs/build/.nojekyll
+after_success:
+  # update coveralls report
+  - coveralls
 
 deploy:
   - provider: pages:git

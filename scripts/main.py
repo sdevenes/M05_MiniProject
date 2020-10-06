@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 from tabulate import tabulate
-import algorithm
-import database
-import analysis
+from scripts import algorithm, database, analysis, config
 import numpy as np
-import config
-
 
 def base_experiment(protocol, variables, filepath, nb_tree_per_forest=50, max_depth=10):
     """Basic test for the random forest classifier
