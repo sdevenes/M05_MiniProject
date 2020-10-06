@@ -1,7 +1,5 @@
-requests
-scikit-learn
+requests==2.24.0
+scikit-learn==0.23.2
+numpy==1.19.1
 plotly_express==0.4.1
-sphinx
-sphinx_rtd_theme
-nose
-tabulate
+tabulate==0.8.7
