@@ -4,6 +4,8 @@
    :target: https://sdevenes.github.io/M05_MiniProject/index.html
 .. image:: https://img.shields.io/badge/github-project-0000c0.svg
    :target: https://github.com/sdevenes/M05_MiniProject
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
 
 ===============================================================
  Human Activity Recognition from Continuous Ambient Sensor Data
