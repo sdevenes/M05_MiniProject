@@ -26,6 +26,9 @@ script:
   # Build documentation
   - sphinx-build docs/source docs/build
   - touch docs/build/.nojekyll
+after_success:
+  # update coveralls report
+  - coveralls
 
 deploy:
   - provider: pages:git
