@@ -13,7 +13,7 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda create -q -n project python=$TRAVIS_PYTHON_VERSION -c plotly --file requirements.txt
+  - conda create -q -n project python=$TRAVIS_PYTHON_VERSION -c plotly --file requirements.txt --file build-requirements.txt
   - conda activate project
 
 script:
