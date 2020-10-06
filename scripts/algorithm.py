@@ -6,21 +6,6 @@ import logging
 logger = logging.getLogger()
 
 
-def make_labels(X):
-    """Generate label array from the given data
-
-    Args:
-        X (list): A list of 1D array (with a dtype of float64) showing the input
-                  training samples, where each item of the list correspond to one class.
-    Returns:
-        numpy.ndarray: A 1D array (with a dtype of int) containing the
-        label for each sample
-    Raises:
-        None
-    """
-    return np.hstack([k*np.ones(len(X[k]), dtype=int) for k in range(len(X))])
-
-
 class Model:
   def __init__(self, nb_tree_per_forest=50, max_depth=10):
     """Create a new ML model (Random forest classifier from scikitlearn)
@@ -38,33 +23,25 @@ class Model:
                                         random_state=0)
 
 
-  def train(self, X):
+  def train(self, X, y):
     """Train the model using the given data
 
     Args:
-        X (list): A list of 1D array (with a dtype of float64) showing the input training samples, 
-                  where each item of the list correspond to one class.
+        X (numpy.ndarray):A NxM 2D-array where each row corresponds to a sample and each column to a feature
+        y (numpy.ndarray): A 1D-array of length N, where each element corresponds to a sample label
     Returns:
         None
     Raises:
         None
     """
-    # Get features
-    X_features = np.vstack([k for k in X])
-
-    # Get labels
-    y = make_labels(X)
-
-    # Train the model
-    self.model.fit(X_features, y)
+    self.model.fit(X, y)
 
 
   def predict(self, X):
     """Make a prediction on the data using the trained model
 
     Args:
-        X (list): A list of 1D array (with a dtype of float64) showing the input training samples, 
-                  where each item of the list correspond to one class.
+        X (numpy.ndarray):A NxM 2D-array where each row corresponds to a sample and each column to a feature
     Returns:
         numpy.ndarray: A 1D array (with a dtype of int) containing the predicted
         label for each sample
@@ -72,10 +49,6 @@ class Model:
     Raises:
         None
     """
-    # Get features
-    X_features = np.vstack([k for k in X])
-
-    # Predict using the trained model
-    prediction = self.model.predict(X_features)
+    prediction = self.model.predict(X)
 
     return prediction
