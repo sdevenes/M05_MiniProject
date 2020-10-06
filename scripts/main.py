@@ -4,9 +4,10 @@ import algorithm
 import database
 import analysis
 import numpy as np
+import config
 
 
-def base_test(protocol, variables, filepath, nb_tree_per_forest=50, max_depth=10):
+def base_experiment(protocol, variables, filepath, nb_tree_per_forest=50, max_depth=10):
     """Basic test for the random forest classifier
 
     Args:
@@ -45,18 +46,18 @@ def pretty_confusion_matrix(cm):
     return table
 
 
-def test_impact_nb_trees(tabnum, filepath):
+def experiment_impact_nb_trees(tabnum, filepath, nb_trees, max_depth):
     """Evaluates and print the impact of the number of trees per forest on the classifiers performance
 
     Args:
         tabnum (int): first confusion matrix numbering
         filepath (str): path to the file containing the dataset to load
+        nb_trees (list): list of number of trees to evaluate
     Returns:
         None
     Raises:
         None
     """
-    nb_trees = [1, 5, 10]
     print("\nImpact of number of trees per forest")
     for n, p in enumerate(database.PROTOCOLS):
         for m, nb_tree_per_forest in enumerate(nb_trees):
@@ -65,11 +66,15 @@ def test_impact_nb_trees(tabnum, filepath):
                 protocol=p,
                 nb_trees=nb_tree_per_forest)
             )
-            cm = base_test(p, database.VARIABLES, nb_tree_per_forest=nb_tree_per_forest, filepath=filepath)
+            cm = base_experiment(p,
+                                 database.VARIABLES,
+                                 nb_tree_per_forest=nb_tree_per_forest,
+                                 max_depth=max_depth,
+                                 filepath=filepath)
             print(pretty_confusion_matrix(cm))
 
 
-def test_impact_tree_depth(tabnum, filepath):
+def experiment_impact_tree_depth(tabnum, filepath, nb_trees, max_depths):
     """Evaluates and print the impact of the trees depth on the classifiers performance
 
     Args:
@@ -80,21 +85,32 @@ def test_impact_tree_depth(tabnum, filepath):
     Raises:
         None
     """
-    depths = [1, 5, 10]
     print("\nImpact of trees maximum depth")
     for n, p in enumerate(database.PROTOCOLS):
-        for m, max_depth in enumerate(depths):
+        for m, max_depth in enumerate(max_depths):
             print(
                 "\nTable {table_number}: Confusion matrix with trees maximum depth of {max_depth} for Protocol `{protocol}`".format(
-                    table_number=(n * len(depths)) + m + tabnum,
+                    table_number=(n * len(max_depths)) + m + tabnum,
                     protocol=p,
                     max_depth=max_depth)
             )
-            cm = base_test(p, database.VARIABLES, max_depth=max_depth, nb_tree_per_forest=10, filepath=filepath)
+            cm = base_experiment(p,
+                                 database.VARIABLES,
+                                 nb_tree_per_forest=nb_trees,
+                                 max_depth=max_depth,
+                                 filepath=filepath)
             print(pretty_confusion_matrix(cm))
 
 
 if __name__ == '__main__':
     print("Main script for Human Activity Recognition with Random Forest classifier")
-    test_impact_nb_trees(1, filepath='../data/csh101/csh101.ann.features.csv')
-    test_impact_tree_depth(7, filepath='../data/csh101/csh101.ann.features.csv')
+    tabnum = 1
+    experiment_impact_nb_trees(tabnum,
+                               filepath=config.data_path,
+                               nb_trees=config.nb_trees_experiment['nb_trees'],
+                               max_depth=config.nb_trees_experiment['tree_depth'])
+    tabnum += len(config.nb_trees_experiment['nb_trees'])*len(database.PROTOCOLS)
+    experiment_impact_tree_depth(tabnum,
+                                 filepath=config.data_path,
+                                 nb_trees=config.tree_depth_experiment['nb_trees'],
+                                 max_depths=config.tree_depth_experiment['tree_depth'])
