@@ -6,20 +6,14 @@ python:
   - "3.8"
 install:
   # Install phase of our CI pipeline
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - source "$HOME/miniconda/etc/profile.d/conda.sh"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  - conda info -a
-  - conda create -q -n project python=$TRAVIS_PYTHON_VERSION -c plotly --file requirements.txt --file build-requirements.txt
-  - conda activate project
+  - pip install .
+  - pip install -r build-requirements.txt
 
 script:
   # Run phase of our CI pipeline
+  - rr-paper
   # Run unitTests
-  - nosetests --nocapture -v tests/test.py --with-coverage --cover-package=scripts
+  - nosetests --nocapture -v tests/test.py --with-coverage --cover-package=rr
   # Generate rst files from docstring
   - sphinx-apidoc -fMeT -o docs/source/api scripts
   # Build documentation
@@ -39,4 +33,12 @@ deploy:
     local_dir: ./docs/build
     on:
         branch: master
-        condition: $TRAVIS_PYTHON_VERSION = 3.8
+        condition: "$TRAVIS_PYTHON_VERSION = 3.8"
+  - provider: pypi
+      server: https://test.pypi.org/legacy/ # Remove to deployment on pypi.org
+      username: "__token__"
+      password:
+        secure: AgENdGVzdC5weXBpLm9yZwIkNDkzMjE2ZDMtYjlhYy00NTViLTg1MzYtZGU4N2YyNjA0NDY1AAIleyJwZXJtaXNzaW9ucyI6ICJ1c2VyIiwgInZlcnNpb24iOiAxfQAABiCE1UhRrnGVriZfsUQEp0YRaWTuAOLsDggCBBsOB-PbMQ
+      on:
+        tags: true
+        condition: "$TRAVIS_PYTHON_VERSION = 3.8"
