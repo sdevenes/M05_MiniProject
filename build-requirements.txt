@@ -3,3 +3,4 @@ sphinx_rtd_theme
 nose
 coverage
 coveralls
+black
