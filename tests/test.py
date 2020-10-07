@@ -67,6 +67,19 @@ def test_get_confusion_matrix():
     nose.tools.ok_((cm == ref).all(), msg="{} != {}".format(cm, ref))
 
 
+def test_plot_confusion_matrix():
+    cm = np.array([[2, 0, 0], [0, 2, 1], [0, 1, 1]])
+    classes = np.array(["class1", "class2", "class3"])
+    save_path = base_path + "/output/confusion_matrix"
+    analysis.plot_confusion_matrix(
+        cm, classes, normalize=True, title="Confusion matrix", file_name=save_path
+    )
+    nose.tools.ok_(
+        os.path.isfile(save_path + ".html"),
+        msg="Confusion matrix graph not correctly generated",
+    )
+
+
 def test_load():
     datapath = base_path + "/inputs/test_set.csv"
     data_len = 1225
