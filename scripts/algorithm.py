@@ -3,12 +3,13 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import numpy as np
 
 import logging
+
 logger = logging.getLogger()
 
 
 class Model:
-  def __init__(self, nb_tree_per_forest=50, max_depth=10):
-    """Create a new ML model (Random forest classifier from scikitlearn)
+    def __init__(self, nb_tree_per_forest=50, max_depth=10):
+        """Create a new ML model (Random forest classifier from scikitlearn)
 
     Args:
         nb_tree_per_forest: number of decision trees in the forest
@@ -18,13 +19,13 @@ class Model:
     Raises:
         None
     """
-    # Create a random forest model
-    self.model = RandomForestClassifier(n_estimators=nb_tree_per_forest, max_depth=max_depth,
-                                        random_state=0)
+        # Create a random forest model
+        self.model = RandomForestClassifier(
+            n_estimators=nb_tree_per_forest, max_depth=max_depth, random_state=0
+        )
 
-
-  def train(self, X, y):
-    """Train the model using the given data
+    def train(self, X, y):
+        """Train the model using the given data
 
     Args:
         X (numpy.ndarray):A NxM 2D-array where each row corresponds to a sample and each column to a feature
@@ -34,11 +35,10 @@ class Model:
     Raises:
         None
     """
-    self.model.fit(X, y)
+        self.model.fit(X, y)
 
-
-  def predict(self, X):
-    """Make a prediction on the data using the trained model
+    def predict(self, X):
+        """Make a prediction on the data using the trained model
 
     Args:
         X (numpy.ndarray):A NxM 2D-array where each row corresponds to a sample and each column to a feature
@@ -49,6 +49,6 @@ class Model:
     Raises:
         None
     """
-    prediction = self.model.predict(X)
+        prediction = self.model.predict(X)
 
-    return prediction
+        return prediction
