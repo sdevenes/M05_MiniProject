@@ -4,95 +4,91 @@ import csv
 from sklearn.model_selection import train_test_split
 
 PROTOCOLS = {
-    'proto1': {'train': 0.8, 'test': 0.2, 'random': 1},
-    'proto2': {'train': 0.8, 'test': 0.2, 'random': 2},
+    "proto1": {"train": 0.8, "test": 0.2, "random": 1},
+    "proto2": {"train": 0.8, "test": 0.2, "random": 2},
 }
 
-SUBSETS = [
-    'train',
-    'validation',
-    'test'
-]
+SUBSETS = ["train", "validation", "test"]
 
 CLASSES = [
-    'Other_Activity',
-    'Watch_TV',
-    'Sleep_Out_Of_Bed',
-    'Bathe',
-    'Cook_Breakfast',
-    'Dress',
-    'Toilet',
-    'Personal_Hygiene',
-    'Sleep',
-    'Read',
-    'Relax',
-    'Cook_Dinner',
-    'Drink',
-    'Eat_Breakfast',
-    'Morning_Meds',
-    'Evening_Meds',
-    'Wash_Breakfast_Dishes',
-    'Cook_Lunch',
-    'Wash_Dishes',
-    'Leave_Home',
-    'Cook',
-    'Enter_Home',
-    'Entertain_Guests',
-    'Wash_Dinner_Dishes',
-    'Phone',
-    'Groom',
-    'Step_Out',
-    'Eat_Dinner',
-    'Eat_Lunch',
-    'Wash_Lunch_Dishes',
-    'Bed_Toilet_Transition',
-    'Eat',
-    'Go_To_Sleep',
-    'Wake_Up',
-    'Work_At_Table'
+    "Other_Activity",
+    "Watch_TV",
+    "Sleep_Out_Of_Bed",
+    "Bathe",
+    "Cook_Breakfast",
+    "Dress",
+    "Toilet",
+    "Personal_Hygiene",
+    "Sleep",
+    "Read",
+    "Relax",
+    "Cook_Dinner",
+    "Drink",
+    "Eat_Breakfast",
+    "Morning_Meds",
+    "Evening_Meds",
+    "Wash_Breakfast_Dishes",
+    "Cook_Lunch",
+    "Wash_Dishes",
+    "Leave_Home",
+    "Cook",
+    "Enter_Home",
+    "Entertain_Guests",
+    "Wash_Dinner_Dishes",
+    "Phone",
+    "Groom",
+    "Step_Out",
+    "Eat_Dinner",
+    "Eat_Lunch",
+    "Wash_Lunch_Dishes",
+    "Bed_Toilet_Transition",
+    "Eat",
+    "Go_To_Sleep",
+    "Wake_Up",
+    "Work_At_Table",
 ]
 
 VARIABLES = [
-    'lastSensorEventHours',
-    'lastSensorEventSeconds',
-    'lastSensorDayOfWeek',
-    'windowDuration',
-    'timeSinceLastSensorEvent',
-    'prevDominantSensor1',
-    'prevDominantSensor2',
-    'lastSensorID',
-    'lastSensorLocation',
-    'lastMotionLocation',
-    'complexity',
-    'activityChange',
-    'areaTransitions',
-    'numDistinctSensors',
-    'sensorCount-Bathroom',
-    'sensorCount-Bedroom',
-    'sensorCount-Chair',
-    'sensorCount-DiningRoom',
-    'sensorCount-Hall',
-    'sensorCount-Ignore',
-    'sensorCount-Kitchen',
-    'sensorCount-LivingRoom',
-    'sensorCount-Office',
-    'sensorCount-OutsideDoor',
-    'sensorCount-WorkArea',
-    'sensorElTime-Bathroom',
-    'sensorElTime-Bedroom',
-    'sensorElTime-Chair',
-    'sensorElTime-DiningRoom',
-    'sensorElTime-Hall',
-    'sensorElTime-Ignore',
-    'sensorElTime-Kitchen',
-    'sensorElTime-LivingRoom',
-    'sensorElTime-Office',
-    'sensorElTime-OutsideDoor',
-    'sensorElTime-WorkArea'
+    "lastSensorEventHours",
+    "lastSensorEventSeconds",
+    "lastSensorDayOfWeek",
+    "windowDuration",
+    "timeSinceLastSensorEvent",
+    "prevDominantSensor1",
+    "prevDominantSensor2",
+    "lastSensorID",
+    "lastSensorLocation",
+    "lastMotionLocation",
+    "complexity",
+    "activityChange",
+    "areaTransitions",
+    "numDistinctSensors",
+    "sensorCount-Bathroom",
+    "sensorCount-Bedroom",
+    "sensorCount-Chair",
+    "sensorCount-DiningRoom",
+    "sensorCount-Hall",
+    "sensorCount-Ignore",
+    "sensorCount-Kitchen",
+    "sensorCount-LivingRoom",
+    "sensorCount-Office",
+    "sensorCount-OutsideDoor",
+    "sensorCount-WorkArea",
+    "sensorElTime-Bathroom",
+    "sensorElTime-Bedroom",
+    "sensorElTime-Chair",
+    "sensorElTime-DiningRoom",
+    "sensorElTime-Hall",
+    "sensorElTime-Ignore",
+    "sensorElTime-Kitchen",
+    "sensorElTime-LivingRoom",
+    "sensorElTime-Office",
+    "sensorElTime-OutsideDoor",
+    "sensorElTime-WorkArea",
 ]
 
 
-def load(filepath='./data/csh101/csh101.ann.features.csv'):
+def load(filepath="./data/csh101/csh101.ann.features.csv"):
     """Loads the dataset
 
     Args:
@@ -105,8 +101,8 @@ def load(filepath='./data/csh101/csh101.ann.features.csv'):
     """
     x = []
     y = []
-    with open(filepath, 'rt') as f:
-        reader = csv.reader(f, delimiter=',')
+    with open(filepath, "rt") as f:
+        reader = csv.reader(f, delimiter=",")
         for k, row in enumerate(reader):
             if not k:
                 continue
@@ -129,16 +125,25 @@ def split_data(x, y, subset, splits):
     Raises:
         None
     """
-    x_train, x_test, y_train, y_test = train_test_split(x, y,
-                                                        test_size=splits['test'],
-                                                        train_size=splits['train'],
-                                                        random_state=splits['random'],
-                                                        stratify=y)
-    (x_split, y_split) = (x_train, y_train) if subset == 'train' else (x_test, y_test)
+    x_train, x_test, y_train, y_test = train_test_split(
+        x,
+        y,
+        test_size=splits["test"],
+        train_size=splits["train"],
+        random_state=splits["random"],
+        stratify=y,
+    )
+    (x_split, y_split) = (x_train, y_train) if subset == "train" else (x_test, y_test)
     return x_split, y_split
 
 
-def get(protocol, subset, classes=CLASSES, variables=VARIABLES, filepath='./data/csh101/csh101.ann.features.csv'):
+def get(
+    protocol,
+    subset,
+    classes=CLASSES,
+    variables=VARIABLES,
+    filepath="./data/csh101/csh101.ann.features.csv",
+):
     """Get the desired subset
 
     Args:
