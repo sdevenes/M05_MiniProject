@@ -26,6 +26,8 @@ script:
   # Build documentation
   - sphinx-build docs/source docs/build
   - touch docs/build/.nojekyll
+  # Black lint checking
+  - black --check scripts/ tests/
 
 deploy:
   - provider: pages:git
