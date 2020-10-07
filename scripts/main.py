@@ -3,6 +3,7 @@ from tabulate import tabulate
 from scripts import algorithm, database, analysis, config
 import numpy as np
 
+
 def base_experiment(protocol, variables, filepath, nb_tree_per_forest=50, max_depth=10):
     """Basic test for the random forest classifier
 
