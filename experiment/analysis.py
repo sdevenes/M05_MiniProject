@@ -1,7 +1,6 @@
 import plotly.express as px
 from sklearn.metrics import confusion_matrix
 import numpy as np
-import itertools
 
 
 def get_confusion_matrix(prediction_label, true_label):

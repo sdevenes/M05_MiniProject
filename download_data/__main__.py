@@ -1,6 +1,8 @@
 import argparse
 import os.path
-import download_data.download_data as download_data
+import download_data
+
+print(download_data)
 
 parser = argparse.ArgumentParser(description='M05 mini-project: Download dataset.zip online')
 parser.add_argument('source', type=str,
