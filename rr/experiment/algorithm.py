@@ -10,14 +10,13 @@ class Model:
         """Create a new ML model (Random forest classifier from scikitlearn)
 
     Args:
-        nb_tree_per_forest: number of decision trees in the forest
-        max_depth: max depth of the trees
+        nb_tree_per_forest (int): number of decision trees in the forest
+        max_depth (int): max depth of the trees
     Returns:
         None
     Raises:
         None
     """
-        # Create a random forest model
         self.model = RandomForestClassifier(
             n_estimators=nb_tree_per_forest, max_depth=max_depth, random_state=0
         )

@@ -99,7 +99,6 @@ def test_load():
 def test_split_data_test():
     datapath = base_path + "/inputs/test_set.csv"
     data_len = 1225
-    num_columns = len(database.VARIABLES)
     protocol = "proto1"
     subset = "test"
     expected_test_len = np.ceil(database.PROTOCOLS[protocol][subset] * data_len)

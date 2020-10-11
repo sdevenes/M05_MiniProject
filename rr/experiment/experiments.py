@@ -49,7 +49,7 @@ def pretty_confusion_matrix(cm):
 
 
 def experiment_impact_nb_trees(tabnum, filepath, nb_trees, max_depth, plot_path):
-    """Evaluates and print the impact of the number of trees per forest on the classifiers performance
+    """Evaluates the impact of the number of trees per forest on the classifiers performance
 
     Args:
         tabnum (int): first confusion matrix numbering
@@ -89,7 +89,7 @@ def experiment_impact_nb_trees(tabnum, filepath, nb_trees, max_depth, plot_path)
 
 
 def experiment_impact_tree_depth(tabnum, filepath, nb_trees, max_depths, plot_path):
-    """Evaluates and print the impact of the trees depth on the classifiers performance
+    """Evaluates and the impact of the trees depth on the classifiers performance
 
     Args:
         tabnum (int): first confusion matrix numbering

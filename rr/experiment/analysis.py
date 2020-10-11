@@ -33,7 +33,6 @@ def plot_confusion_matrix(
     Raises:
         None
     """
-    # Normalize if wanted
     if normalize:
         cm = cm / np.sum(cm)
 
@@ -46,6 +45,4 @@ def plot_confusion_matrix(
         color_continuous_scale="Blues",
         title=title,
     )
-    # fig.show()
-    # Export graph
     fig.write_html("{}.html".format(file_name))
