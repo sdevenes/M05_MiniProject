@@ -35,5 +35,6 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-tests/output/
+# test results
+rr/tests/output/
 

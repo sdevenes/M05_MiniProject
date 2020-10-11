@@ -1,6 +1,7 @@
 from tabulate import tabulate
 from rr.experiment import algorithm, database, analysis
 import numpy as np
+import os.path
 
 
 def base_experiment(protocol, variables, filepath, nb_tree_per_forest=50, max_depth=10):
@@ -47,7 +48,7 @@ def pretty_confusion_matrix(cm):
     return table
 
 
-def experiment_impact_nb_trees(tabnum, filepath, nb_trees, max_depth):
+def experiment_impact_nb_trees(tabnum, filepath, nb_trees, max_depth, plot_path):
     """Evaluates and print the impact of the number of trees per forest on the classifiers performance
 
     Args:
@@ -55,6 +56,7 @@ def experiment_impact_nb_trees(tabnum, filepath, nb_trees, max_depth):
         filepath (str): path to the file containing the dataset to load
         nb_trees (list): list of number of trees to evaluate
         max_depth (int): trees maximum depth
+        plot_path (str): folder where to store confusion matrix plots
     Returns:
         str : experiment results
     Raises:
@@ -65,10 +67,9 @@ def experiment_impact_nb_trees(tabnum, filepath, nb_trees, max_depth):
     for n, p in enumerate(database.PROTOCOLS):
         print("Processing `protocol` {}...".format(p))
         for m, nb_tree_per_forest in enumerate(nb_trees):
+            num = (n * len(nb_trees)) + m + tabnum
             result += "\nTable {table_number}: Confusion matrix with {nb_trees} tree(s) for Protocol `{protocol}`".format(
-                table_number=(n * len(nb_trees)) + m + tabnum,
-                protocol=p,
-                nb_trees=nb_tree_per_forest,
+                table_number=num, protocol=p, nb_trees=nb_tree_per_forest,
             )
             cm = base_experiment(
                 p,
@@ -78,11 +79,16 @@ def experiment_impact_nb_trees(tabnum, filepath, nb_trees, max_depth):
                 filepath=filepath,
             )
             result += pretty_confusion_matrix(cm)
+            analysis.plot_confusion_matrix(
+                cm,
+                database.CLASSES,
+                file_name=os.path.join(plot_path, "table_{}".format(num)),
+            )
     print("Experiment completed\n")
     return result
 
 
-def experiment_impact_tree_depth(tabnum, filepath, nb_trees, max_depths):
+def experiment_impact_tree_depth(tabnum, filepath, nb_trees, max_depths, plot_path):
     """Evaluates and print the impact of the trees depth on the classifiers performance
 
     Args:
@@ -90,6 +96,7 @@ def experiment_impact_tree_depth(tabnum, filepath, nb_trees, max_depths):
         filepath (str): path to the file containing the dataset to load
         nb_trees (int): number of trees in forest
         max_depths (list): list of trees maximum depths to evaluate
+        plot_path (str): folder where to store confusion matrix plots
     Returns:
         str : experiment results
     Raises:
@@ -100,10 +107,9 @@ def experiment_impact_tree_depth(tabnum, filepath, nb_trees, max_depths):
     for n, p in enumerate(database.PROTOCOLS):
         print("Processing `protocol` {}".format(p))
         for m, max_depth in enumerate(max_depths):
+            num = (n * len(max_depths)) + m + tabnum
             result += "\nTable {table_number}: Confusion matrix with trees maximum depth of {max_depth} for Protocol `{protocol}`".format(
-                table_number=(n * len(max_depths)) + m + tabnum,
-                protocol=p,
-                max_depth=max_depth,
+                table_number=num, protocol=p, max_depth=max_depth,
             )
             cm = base_experiment(
                 p,
@@ -113,5 +119,10 @@ def experiment_impact_tree_depth(tabnum, filepath, nb_trees, max_depths):
                 filepath=filepath,
             )
             result += pretty_confusion_matrix(cm)
+            analysis.plot_confusion_matrix(
+                cm,
+                database.CLASSES,
+                file_name=os.path.join(plot_path, "table_{}".format(num)),
+            )
     print("Experiment completed\n")
     return result

@@ -26,6 +26,7 @@ def main():
         filepath=args.datapath,
         nb_trees=[int(n) for n in config["nb_trees_experiment"]["nb_trees"].split(",")],
         max_depth=int(config["nb_trees_experiment"]["tree_depth"]),
+        plot_path=args.output,
     )
 
     tabnum += len(config["nb_trees_experiment"]["nb_trees"].split(",")) * len(
@@ -38,6 +39,7 @@ def main():
         max_depths=[
             int(d) for d in config["tree_depth_experiment"]["tree_depth"].split(",")
         ],
+        plot_path=args.output,
     )
 
     with open(os.path.join(args.output, "experiment_results.txt"), "w+") as fout:
