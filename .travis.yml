@@ -13,7 +13,7 @@ script:
   # Run unitTests
   - nosetests --nocapture -v rr --with-coverage --cover-package=rr
   # Generate rst files from docstring
-  - sphinx-apidoc -fMeT -o docs/source/api rr rr/tests
+  - sphinx-apidoc -fMeT -o docs/source/api rr
   # Build documentation
   - sphinx-build docs/source docs/build
   - touch docs/build/.nojekyll

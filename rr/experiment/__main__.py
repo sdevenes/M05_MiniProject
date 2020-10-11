@@ -6,14 +6,15 @@ import os.path
 
 
 def main():
+    basepath = os.path.dirname(os.path.realpath(__file__))
     parser = argparse.ArgumentParser(description="M05 mini-project: experiments")
     parser.add_argument("datapath", type=str, help="Dataset file in .csv")
     parser.add_argument("output", type=str, help="Destination folder for the results")
     parser.add_argument(
-        "config", type=str, help="Filepath for experiments configuration file in .ini"
+        "--config", type=str, help="Filepath for experiments configuration file in .ini", default=basepath+"/experiment.ini"
     )
     args = parser.parse_args()
-
+    print(basepath+"/experiment.ini")
     config = configparser.ConfigParser()
     config.read(args.config)
 
