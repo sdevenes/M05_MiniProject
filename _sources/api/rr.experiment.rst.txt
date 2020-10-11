@@ -1,0 +1,18 @@
+rr.experiment package
+=====================
+
+.. automodule:: rr.experiment
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   rr.experiment.algorithm
+   rr.experiment.analysis
+   rr.experiment.database
+   rr.experiment.experiments

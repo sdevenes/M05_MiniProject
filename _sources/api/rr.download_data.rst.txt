@@ -1,0 +1,15 @@
+rr.download\_data package
+=========================
+
+.. automodule:: rr.download_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   rr.download_data.download_data

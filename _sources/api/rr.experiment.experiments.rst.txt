@@ -1,0 +1,7 @@
+rr.experiment.experiments module
+================================
+
+.. automodule:: rr.experiment.experiments
+   :members:
+   :undoc-members:
+   :show-inheritance:

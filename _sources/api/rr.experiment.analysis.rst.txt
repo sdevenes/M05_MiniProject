@@ -1,0 +1,7 @@
+rr.experiment.analysis module
+=============================
+
+.. automodule:: rr.experiment.analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:

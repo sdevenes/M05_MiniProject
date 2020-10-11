@@ -1,0 +1,16 @@
+rr package
+==========
+
+.. automodule:: rr
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   rr.download_data
+   rr.experiment

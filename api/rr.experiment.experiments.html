@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>rr.experiment.experiments module &mdash; M05 MiniProject docs</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="rr.experiment.database module" href="rr.experiment.database.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> M05 miniProject
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#building-the-documentation">Building the documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guide.html#results-for-protocol-proto1">Results for Protocol <cite>proto1</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="rr.html">rr package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="rr.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="rr.download_data.html">rr.download_data package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="rr.download_data.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="rr.download_data.download_data.html">rr.download_data.download_data module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 current"><a class="reference internal" href="rr.experiment.html">rr.experiment package</a><ul class="current">
+<li class="toctree-l5 current"><a class="reference internal" href="rr.experiment.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="rr.experiment.algorithm.html">rr.experiment.algorithm module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="rr.experiment.analysis.html">rr.experiment.analysis module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="rr.experiment.database.html">rr.experiment.database module</a></li>
+<li class="toctree-l6 current"><a class="current reference internal" href="#">rr.experiment.experiments module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rr.download_data.html">rr.download_data package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rr.download_data.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rr.download_data.download_data.html">rr.download_data.download_data module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rr.download_data.download_data.html">rr.download_data.download_data module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="rr.experiment.html">rr.experiment package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="rr.experiment.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="rr.experiment.algorithm.html">rr.experiment.algorithm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rr.experiment.analysis.html">rr.experiment.analysis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rr.experiment.database.html">rr.experiment.database module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">rr.experiment.experiments module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rr.experiment.algorithm.html">rr.experiment.algorithm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rr.experiment.analysis.html">rr.experiment.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rr.experiment.database.html">rr.experiment.database module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rr.experiment.experiments module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M05 miniProject</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="rr.html">rr package</a> &raquo;</li>
+        
+          <li><a href="rr.experiment.html">rr.experiment package</a> &raquo;</li>
+        
+      <li>rr.experiment.experiments module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/rr.experiment.experiments.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-rr.experiment.experiments">
+<span id="rr-experiment-experiments-module"></span><h1>rr.experiment.experiments module<a class="headerlink" href="#module-rr.experiment.experiments" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="rr.experiment.experiments.base_experiment">
+<code class="sig-prename descclassname">rr.experiment.experiments.</code><code class="sig-name descname">base_experiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">protocol</span></em>, <em class="sig-param"><span class="n">variables</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">nb_tree_per_forest</span><span class="o">=</span><span class="default_value">50</span></em>, <em class="sig-param"><span class="n">max_depth</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rr.experiment.experiments.base_experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic test for the random forest classifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>protocol</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – protocol to use</p></li>
+<li><p><strong>variables</strong> (<em>1d-array</em>) – list of desired variables (features)</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – path to the file containing the dataset to load</p></li>
+<li><p><strong>nb_tree_per_forest</strong> – number of decision trees in the forest</p></li>
+<li><p><strong>max_depth</strong> – max depth of the trees</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A 2D array (with a dtype of int) containing the confusion matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)">numpy.ndarray</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rr.experiment.experiments.experiment_impact_nb_trees">
+<code class="sig-prename descclassname">rr.experiment.experiments.</code><code class="sig-name descname">experiment_impact_nb_trees</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tabnum</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">nb_trees</span></em>, <em class="sig-param"><span class="n">max_depth</span></em>, <em class="sig-param"><span class="n">plot_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rr.experiment.experiments.experiment_impact_nb_trees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the impact of the number of trees per forest on the classifiers performance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – first confusion matrix numbering</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – path to the file containing the dataset to load</p></li>
+<li><p><strong>nb_trees</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – list of number of trees to evaluate</p></li>
+<li><p><strong>max_depth</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – trees maximum depth</p></li>
+<li><p><strong>plot_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – folder where to store confusion matrix plots</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>experiment results</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rr.experiment.experiments.experiment_impact_tree_depth">
+<code class="sig-prename descclassname">rr.experiment.experiments.</code><code class="sig-name descname">experiment_impact_tree_depth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tabnum</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">nb_trees</span></em>, <em class="sig-param"><span class="n">max_depths</span></em>, <em class="sig-param"><span class="n">plot_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rr.experiment.experiments.experiment_impact_tree_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates and the impact of the trees depth on the classifiers performance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tabnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – first confusion matrix numbering</p></li>
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – path to the file containing the dataset to load</p></li>
+<li><p><strong>nb_trees</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – number of trees in forest</p></li>
+<li><p><strong>max_depths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – list of trees maximum depths to evaluate</p></li>
+<li><p><strong>plot_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – folder where to store confusion matrix plots</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>experiment results</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="rr.experiment.experiments.pretty_confusion_matrix">
+<code class="sig-prename descclassname">rr.experiment.experiments.</code><code class="sig-name descname">pretty_confusion_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cm</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rr.experiment.experiments.pretty_confusion_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds labels to confusion matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cm</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><em>numpy.ndarray</em></a>) – A 2D array (with a dtype of int) containing the confusion matrix.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>nicely formatted confusion matrix for printing</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="rr.experiment.database.html" class="btn btn-neutral float-left" title="rr.experiment.database module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
