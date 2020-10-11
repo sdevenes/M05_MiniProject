@@ -34,11 +34,11 @@ deploy:
     on:
         branch: master
         condition: "$TRAVIS_PYTHON_VERSION = 3.8"
-  - provider: pypi
-      server: https://test.pypi.org/legacy/ # Remove to deployment on pypi.org
-      username: "__token__"
-      password:
-        secure: AgENdGVzdC5weXBpLm9yZwIkNDkzMjE2ZDMtYjlhYy00NTViLTg1MzYtZGU4N2YyNjA0NDY1AAIleyJwZXJtaXNzaW9ucyI6ICJ1c2VyIiwgInZlcnNpb24iOiAxfQAABiCE1UhRrnGVriZfsUQEp0YRaWTuAOLsDggCBBsOB-PbMQ
-      on:
-        tags: true
-        condition: "$TRAVIS_PYTHON_VERSION = 3.8"
+#  - provider: pypi
+#      server: https://test.pypi.org/legacy/ # Remove to deployment on pypi.org
+#      username: "__token__"
+#      password:
+#        secure: AgENdGVzdC5weXBpLm9yZwIkNDkzMjE2ZDMtYjlhYy00NTViLTg1MzYtZGU4N2YyNjA0NDY1AAIleyJwZXJtaXNzaW9ucyI6ICJ1c2VyIiwgInZlcnNpb24iOiAxfQAABiCE1UhRrnGVriZfsUQEp0YRaWTuAOLsDggCBBsOB-PbMQ
+#      on:
+#        tags: true
+#        condition: "$TRAVIS_PYTHON_VERSION = 3.8"
