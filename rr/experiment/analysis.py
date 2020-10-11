@@ -8,7 +8,7 @@ def get_confusion_matrix(prediction_label, true_label):
 
     Args:
         prediction_label (list): Estimated targets as returned by a classifier.
-        true_label (list): Ground truth (correct) target values.   
+        true_label (list): Ground truth (correct) target values.
     Returns:
         numpy.ndarray: A 2D array (with a dtype of int) containing the confusion matrix.
     Raises:
@@ -25,7 +25,7 @@ def plot_confusion_matrix(
     Args:
         cm (numpy.ndarray): A 2D array (with a dtype of int) containing the confusion matrix.
         classes (numpy.ndarray): A 1D array (with a dtype of str) containing the lable name for each class
-        normalize (boolean): Flag to normalize the data 
+        normalize (boolean): Flag to normalize the data
         title (str): The title of the plot
         file_name (str): File name to export the graph
     Returns:

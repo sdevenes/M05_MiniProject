@@ -69,7 +69,9 @@ def experiment_impact_nb_trees(tabnum, filepath, nb_trees, max_depth, plot_path)
         for m, nb_tree_per_forest in enumerate(nb_trees):
             num = (n * len(nb_trees)) + m + tabnum
             result += "\nTable {table_number}: Confusion matrix with {nb_trees} tree(s) for Protocol `{protocol}`".format(
-                table_number=num, protocol=p, nb_trees=nb_tree_per_forest,
+                table_number=num,
+                protocol=p,
+                nb_trees=nb_tree_per_forest,
             )
             cm = base_experiment(
                 p,
@@ -109,7 +111,9 @@ def experiment_impact_tree_depth(tabnum, filepath, nb_trees, max_depths, plot_pa
         for m, max_depth in enumerate(max_depths):
             num = (n * len(max_depths)) + m + tabnum
             result += "\nTable {table_number}: Confusion matrix with trees maximum depth of {max_depth} for Protocol `{protocol}`".format(
-                table_number=num, protocol=p, max_depth=max_depth,
+                table_number=num,
+                protocol=p,
+                max_depth=max_depth,
             )
             cm = base_experiment(
                 p,
