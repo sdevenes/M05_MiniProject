@@ -10,17 +10,15 @@ install:
   - pip install -r build-requirements.txt
 
 script:
-  # Run phase of our CI pipeline
-  - rr-paper
   # Run unitTests
-  - nosetests --nocapture -v tests/test.py --with-coverage --cover-package=rr
+  - nosetests --nocapture -v rr --with-coverage --cover-package=rr
   # Generate rst files from docstring
-  - sphinx-apidoc -fMeT -o docs/source/api experiment
+  - sphinx-apidoc -fMeT -o docs/source/api rr rr/tests
   # Build documentation
   - sphinx-build docs/source docs/build
   - touch docs/build/.nojekyll
   # Black lint checking
-  - black --check experiment/ test/ download_data/
+  - black --check rr/
 after_success:
   # update coveralls report
   - coveralls
