@@ -25,7 +25,7 @@ The project documentation is generated with sphinx and can simply be build using
 
 .. code:: sh
 
-   $ sphinx-apidoc -fMeT -o docs/source/api scripts
+   $ sphinx-apidoc -fMeT -o docs/source/api rr
    $ sphinx-build docs/source docs/build
 
 The first command will generates restructured files containing API documentation for all the python 

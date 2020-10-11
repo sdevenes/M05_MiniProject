@@ -11,7 +11,7 @@ def load_requirements(f):
 
 setup(
     name="rr",
-    version="1.0.0",
+    version="0.2.0",
     description="Basic example of a Reproducible Research Project in Python",
     url="https://github.com/sdevenes/M05_MiniProject",
     license="MIT",
