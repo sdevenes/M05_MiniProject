@@ -23,7 +23,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=load_requirements("requirements.txt"),
-    entry_points={"console_scripts": ["rr-paper = rr.experiment.__main__:main"]},
+    entry_points={"console_scripts": ["rr-paper = rr.experiment.__main__:main",
+                                      "rr-data = rr.download_data.__main__:main"]},
     classifiers=[
         "Development Status :: 1 - Beta",
         "Intended Audience :: Developers",
