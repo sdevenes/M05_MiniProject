@@ -1,3 +1,3 @@
 include LICENSE README.rst buildout.cfg requirements.txt
 recursive-include doc conf.py *.rst *.ico *.png
-recursive-include tests *.csv *.zip *.txt
+graft tests/inputs

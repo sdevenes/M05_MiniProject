@@ -15,12 +15,12 @@ script:
   # Run unitTests
   - nosetests --nocapture -v tests/test.py --with-coverage --cover-package=rr
   # Generate rst files from docstring
-  - sphinx-apidoc -fMeT -o docs/source/api scripts
+  - sphinx-apidoc -fMeT -o docs/source/api experiment
   # Build documentation
   - sphinx-build docs/source docs/build
   - touch docs/build/.nojekyll
   # Black lint checking
-  - black --check scripts/ tests/
+  - black --check experiment/ test/ download_data/
 after_success:
   # update coveralls report
   - coveralls

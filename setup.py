@@ -15,6 +15,7 @@ setup(
     description="Basic example of a Reproducible Research Project in Python",
     url="https://github.com/sdevenes/M05_MiniProject",
     license="MIT",
+    license_file="LICENSE",
     author="Steve Devènes, Amara Spano",
     author_email="steve.devenes@etu.unidistance.ch, amara.spano@etu.unidistance.ch",
     long_description=open("README.rst").read(),
@@ -22,7 +23,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=load_requirements("requirements.txt"),
-    entry_points={"console_scripts": ["rr-paper = scripts.main:main"]},
+    entry_points={"console_scripts": ["rr-paper = rr.experiment.__main__:main"]},
     classifiers=[
         "Development Status :: 1 - Beta",
         "Intended Audience :: Developers",
