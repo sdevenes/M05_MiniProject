@@ -5,9 +5,8 @@ Unit tests are available for the project and can be run simply with the followin
 
 .. code-block:: shell
 
-   (project) $ nosetests --nocapture -v tests/test.py
+   (project) $ nosetests --nocapture -v rr
 
 .. note::
-   the tests are implemented using `nose <https://pypi.org/project/nose/>`_ python package, it needs to be installed beforhand
-   in the case where the conda environment provided is not activated
+   the tests are implemented using `nose <https://pypi.org/project/nose/>`_ python package, it needs to be installed beforhand.
 

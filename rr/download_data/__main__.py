@@ -9,7 +9,12 @@ def main():
     parser = argparse.ArgumentParser(
         description="M05 mini-project: Download dataset.zip online"
     )
-    parser.add_argument("source", type=str, help="Data zip url")
+    parser.add_argument(
+        "--source",
+        type=str,
+        help="Data zip url",
+        default="https://archive.ics.uci.edu/ml/machine-learning-databases/00506/casas-dataset.zip",
+    )
     parser.add_argument("destination", type=str, help="Destination folder")
     args = parser.parse_args()
 

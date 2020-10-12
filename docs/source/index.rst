@@ -21,7 +21,7 @@ Authors
 License
 -------
 
-todo
+This work is licensed under a MIT license
 
 Indices and tables
 ------------------

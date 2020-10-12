@@ -2,7 +2,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)) + "/../experiment/")
-from rr.experiment import database, analysis
+from rr.experiment import database, analysis, experiments
 from rr.download_data import download_data
 import zipfile
 import requests
@@ -176,3 +176,100 @@ def test_get_limited_classes():
         msg="y contains other classes than: {}".format(classes),
     )
     nose.tools.ok_(x.shape[0] == y.shape[0], msg="x.shape[0] != y.shape[0]")
+
+
+def test_base_experiement():
+    datapath = base_path + "/inputs/test_set.csv"
+    cm = experiments.base_experiment("proto1", database.VARIABLES, datapath, 1, 1)
+    nose.tools.ok_(
+        cm.shape == (len(database.CLASSES), len(database.CLASSES)),
+        msg="Confusion matrix size does not match number of classes",
+    )
+
+
+def test_experiment_impact_nb_trees():
+    datapath = base_path + "/inputs/test_set.csv"
+    output_path = base_path + "/output/"
+    results = experiments.experiment_impact_nb_trees(
+        100, datapath, [1, 2], 1, output_path
+    )
+    # Check table counter
+    nose.tools.ok_(
+        "Table 100: Confusion matrix with 1 tree(s) for Protocol `proto1`" in results,
+        msg="Bad table numbering",
+    )
+    nose.tools.ok_(
+        "Table 101: Confusion matrix with 2 tree(s) for Protocol `proto1`" in results,
+        msg="Bad table numbering",
+    )
+    nose.tools.ok_(
+        "Table 102: Confusion matrix with 1 tree(s) for Protocol `proto2`" in results,
+        msg="Bad table numbering",
+    )
+    nose.tools.ok_(
+        "Table 103: Confusion matrix with 2 tree(s) for Protocol `proto2`" in results,
+        msg="Bad table numbering",
+    )
+    # Check table saving
+    nose.tools.ok_(
+        os.path.isfile(output_path + "table_100.html"),
+        msg="Confusion matrix not created",
+    )
+    nose.tools.ok_(
+        os.path.isfile(output_path + "table_101.html"),
+        msg="Confusion matrix not created",
+    )
+    nose.tools.ok_(
+        os.path.isfile(output_path + "table_102.html"),
+        msg="Confusion matrix not created",
+    )
+    nose.tools.ok_(
+        os.path.isfile(output_path + "table_103.html"),
+        msg="Confusion matrix not created",
+    )
+
+
+def test_experiment_impact_tree_depth():
+    datapath = base_path + "/inputs/test_set.csv"
+    output_path = base_path + "/output/"
+    results = experiments.experiment_impact_tree_depth(
+        200, datapath, 1, [1, 2], base_path + "/output/"
+    )
+    # Check table counter
+    nose.tools.ok_(
+        "Table 200: Confusion matrix with trees maximum depth of 1 for Protocol `proto1`"
+        in results,
+        msg="Bad table numbering",
+    )
+    nose.tools.ok_(
+        "Table 201: Confusion matrix with trees maximum depth of 2 for Protocol `proto1`"
+        in results,
+        msg="Bad table numbering",
+    )
+    nose.tools.ok_(
+        "Table 202: Confusion matrix with trees maximum depth of 1 for Protocol `proto2`"
+        in results,
+        msg="Bad table numbering",
+    )
+    nose.tools.ok_(
+        "Table 203: Confusion matrix with trees maximum depth of 2 for Protocol `proto2`"
+        in results,
+        msg="Bad table numbering",
+    )
+    # Check table saving
+    nose.tools.ok_(
+        os.path.isfile(output_path + "table_200.html"),
+        msg="Confusion matrix not created",
+    )
+    nose.tools.ok_(
+        os.path.isfile(output_path + "table_201.html"),
+        msg="Confusion matrix not created",
+    )
+    nose.tools.ok_(
+        os.path.isfile(output_path + "table_202.html"),
+        msg="Confusion matrix not created",
+    )
+    nose.tools.ok_(
+        os.path.isfile(output_path + "table_203.html"),
+        msg="Confusion matrix not created",
+    )
