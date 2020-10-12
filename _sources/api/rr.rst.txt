@@ -14,3 +14,4 @@ Subpackages
 
    rr.download_data
    rr.experiment
+   rr.tests

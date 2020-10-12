@@ -90,7 +90,19 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">User Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="guide.html#results-for-protocol-proto1">Results for Protocol <cite>proto1</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide.html#working-hypothesis">Working hypothesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide.html#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide.html#machine-learning">Machine learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide.html#results-for-protocol-proto1">Results for Protocol <cite>proto1</cite></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guide.html#impact-of-number-of-trees-with-maximum-depth-of-15">Impact of number of trees with maximum depth of 15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guide.html#impact-of-tree-depth-with-10-trees-per-forest">Impact of tree depth with 10 trees per forest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guide.html#results-for-protocol-proto2">Results for Protocol <cite>proto2</cite></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guide.html#id3">Impact of number of trees with maximum depth of 15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guide.html#id4">Impact of tree depth with 10 trees per forest</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -110,6 +122,13 @@
 <li class="toctree-l6"><a class="reference internal" href="api/rr.experiment.analysis.html">rr.experiment.analysis module</a></li>
 <li class="toctree-l6"><a class="reference internal" href="api/rr.experiment.database.html">rr.experiment.database module</a></li>
 <li class="toctree-l6"><a class="reference internal" href="api/rr.experiment.experiments.html">rr.experiment.experiments module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="api/rr.tests.html">rr.tests package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="api/rr.tests.html#submodules">Submodules</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/rr.tests.test.html">rr.tests.test module</a></li>
 </ul>
 </li>
 </ul>
@@ -140,6 +159,14 @@
 <li class="toctree-l2"><a class="reference internal" href="api/rr.experiment.analysis.html">rr.experiment.analysis module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/rr.experiment.database.html">rr.experiment.database module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/rr.experiment.experiments.html">rr.experiment.experiments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/rr.tests.html">rr.tests package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/rr.tests.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/rr.tests.test.html">rr.tests.test module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/rr.tests.test.html">rr.tests.test module</a></li>
 </ul>
 </li>
 </ul>
@@ -295,6 +322,10 @@
 </li>
         <li><a href="api/rr.experiment.experiments.html#module-rr.experiment.experiments">rr.experiment.experiments</a>
 </li>
+        <li><a href="api/rr.tests.html#module-rr.tests">rr.tests</a>
+</li>
+        <li><a href="api/rr.tests.test.html#module-rr.tests.test">rr.tests.test</a>
+</li>
       </ul></li>
   </ul></td>
 </tr></table>
@@ -344,8 +375,6 @@
         <li><a href="api/rr.experiment.html#module-rr.experiment">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     rr.experiment.algorithm
 
@@ -353,6 +382,8 @@
         <li><a href="api/rr.experiment.algorithm.html#module-rr.experiment.algorithm">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     rr.experiment.analysis
 
@@ -374,6 +405,20 @@
         <li><a href="api/rr.experiment.experiments.html#module-rr.experiment.experiments">module</a>
 </li>
       </ul></li>
+      <li>
+    rr.tests
+
+      <ul>
+        <li><a href="api/rr.tests.html#module-rr.tests">module</a>
+</li>
+      </ul></li>
+      <li>
+    rr.tests.test
+
+      <ul>
+        <li><a href="api/rr.tests.test.html#module-rr.tests.test">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -388,6 +433,40 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_base_experiement">test_base_experiement() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_download_url">test_download_url() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_download_url_invalid_url">test_download_url_invalid_url() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_experiment_impact_nb_trees">test_experiment_impact_nb_trees() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_experiment_impact_tree_depth">test_experiment_impact_tree_depth() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_get_confusion_matrix">test_get_confusion_matrix() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_get_default">test_get_default() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_get_limited_classes">test_get_limited_classes() (in module rr.tests.test)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_get_limited_variables">test_get_limited_variables() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_load">test_load() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_plot_confusion_matrix">test_plot_confusion_matrix() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_split_data_test">test_split_data_test() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_split_data_train">test_split_data_train() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_unzip_file">test_unzip_file() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_unzip_file_invalid_zip_path">test_unzip_file_invalid_zip_path() (in module rr.tests.test)</a>
+</li>
+      <li><a href="api/rr.tests.test.html#rr.tests.test.test_unzip_file_not_a_zip">test_unzip_file_not_a_zip() (in module rr.tests.test)</a>
+</li>
       <li><a href="api/rr.experiment.algorithm.html#rr.experiment.algorithm.Model.train">train() (rr.experiment.algorithm.Model method)</a>
 </li>
   </ul></td>
