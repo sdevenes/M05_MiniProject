@@ -30,19 +30,14 @@
 
 	\begin{frame}
 		\frametitle{Data}
-		Data is available online on the UC Irvine machine learning repository.
-
-		Data are downloaded automatically.
-
-		The dataset is large, it contains 36 features measured plus one output for the classification label
-		of the activity (35 differents activities), for a total of 13956534 entries.
-
-		There are two evaluation protocols:
-		\begin{figure}
-			\centering
-			%\includegraphics[width=\linewidth]{idiap_web.jpg}
-			\missingfigure{Protocols illustration}
-		\end{figure}
+		\begin{itemize}
+			\item Data is available online on the UC Irvine machine learning repository(Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.).
+			\item Data are downloaded through the command line.
+			\item The dataset is large, it contains 36 features measured plus one output for the classification label
+			of the activity (35 different activities), for a total of 13956534 entries (30 different participants).
+			\item For the experiments, data from a unique house is used
+			\item There are two evaluation protocols splitting the data into 80\% train and 20\% test sets with 2 different random seeds.
+		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
@@ -67,7 +62,7 @@
 
 		The general approach:
 		\begin{itemize}
-			\item Create 1 branch per feature named \textit{feature/feature\_name}
+			\item Create 1 branch per feature named \textit{feature/feature\_name} or \textit{issue\_\#issue/issue\_name} 
 			\item When the feature is complete, do a pull request with the other as a reviewer
 		\end{itemize}
 
@@ -77,25 +72,20 @@
 		\end{figure}
 	\end{frame}
 
-%	\begin{frame}
-%		\frametitle{Version control}
-%		\begin{figure}
-%			\centering
-%			%\includegraphics[width=\linewidth]{idiap_web.jpg}
-%			\missingfigure{Git tree illustration}
-%		\end{figure}
-%	\end{frame}
 
 	\begin{frame}
 		\frametitle{Unit Testing and CI}
-		The majority of the functions in the code are covered by unit-tests,
-		this was done using Nose python package.
-		(percentage of coverage ?)
-
-		These tests are run at each commit through travis CI:
-		\url{https://travis-ci.org/github/sdevenes/M05_MiniProject}
-		Procuring a quick detection of bugs and errors that could appears
-		during the project development.
+		\begin{itemize}
+			
+			\item The majority of the functions in the code are covered by unit-tests for a total coverage of 86\%,
+			this was done using Nose python package.
+			\url{https://coveralls.io/github/sdevenes/M05_MiniProject?branch=master}
+			\item These tests are ran at each commit through travis CI:
+			\url{https://travis-ci.org/github/sdevenes/M05_MiniProject}
+			Procuring a quick detection of bugs and e\_ors that could appears
+			during the project development.
+			\item Black is used to enforce formatting that conforms to PEP 8. The formatting is also tested with travis CI.
+		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
@@ -109,10 +99,24 @@
 
 	\begin{frame}
 		\frametitle{Packaging and Deployment}
-		To do
+		\begin{itemize}
+			\item 
+			The package is deployed under \textit{rr\_sdas} version 0.2.0 on pypitest.
+			\url{https://test.pypi.org/project/rr-sdas/0.2.0/}
+			\item The package is composed of 3 sub-packages:
+				\begin{enumerate}
+					\item download\_data
+					\item experiment
+					\item tests
+				\end{enumerate}
+			\item The experiments are configurable through:
+				\begin{enumerate}
+					\item Command line arguments (file sources and destination)
+					\item \textit{experiment.ini} for the random forest parameters
+				\end{enumerate}
+			\item The project is licensed under an MIT license as it is an open source license and it is less restrictive than a GPL license.
+		\end{itemize}
+		
 	\end{frame}
 
-%	\begin{frame}
-%		\frametitle{Final remarks}
-%	\end{frame}
 \end{document}
