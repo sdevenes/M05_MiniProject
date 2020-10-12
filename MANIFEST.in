@@ -1,4 +1,4 @@
 include LICENSE README.rst buildout.cfg requirements.txt
-recursive-include doc conf.py *.rst *.ico *.png
+recursive-include doc conf.py *.rst *.ico *.png *.html
 include rr/experiment/experiment.ini
 graft tests/inputs
