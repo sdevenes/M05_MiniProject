@@ -51,7 +51,7 @@ Impact of number of trees with maximum depth of 15
 .. raw:: html
    :file: img/table_2.html
 
-10 treea in forest
+10 trees in forest
 
 .. raw:: html
    :file: img/table_3.html
@@ -92,7 +92,7 @@ Impact of number of trees with maximum depth of 15
 .. raw:: html
    :file: img/table_5.html
 
-10 treea in forest
+10 trees in forest
 
 .. raw:: html
    :file: img/table_6.html
