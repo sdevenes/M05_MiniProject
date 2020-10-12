@@ -10,6 +10,8 @@
    :target: https://github.com/psf/black
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
    :target: https://opensource.org/licenses/MIT
+.. image:: https://img.shields.io/badge/pypi-project-blueviolet.svg
+   :target: https://test.pypi.org/project/rr-sdas/0.2.0/
 
 
 ===============================================================
