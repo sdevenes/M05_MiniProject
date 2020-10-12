@@ -10,7 +10,7 @@ def load_requirements(f):
 
 
 setup(
-    name="rr",
+    name="rr_sdas",
     version="0.2.0",
     description="Basic example of a Reproducible Research Project in Python",
     url="https://github.com/sdevenes/M05_MiniProject",
@@ -26,7 +26,7 @@ setup(
     entry_points={"console_scripts": ["rr-paper = rr.experiment.__main__:main",
                                       "rr-data = rr.download_data.__main__:main"]},
     classifiers=[
-        "Development Status :: 1 - Beta",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",

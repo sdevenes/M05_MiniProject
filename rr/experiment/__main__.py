@@ -11,10 +11,13 @@ def main():
     parser.add_argument("datapath", type=str, help="Dataset file in .csv")
     parser.add_argument("output", type=str, help="Destination folder for the results")
     parser.add_argument(
-        "--config", type=str, help="Filepath for experiments configuration file in .ini", default=basepath+"/experiment.ini"
+        "--config",
+        type=str,
+        help="Filepath for experiments configuration file in .ini",
+        default=basepath + "/experiment.ini",
     )
     args = parser.parse_args()
-    print(basepath+"/experiment.ini")
+    print(basepath + "/experiment.ini")
     config = configparser.ConfigParser()
     config.read(args.config)
 

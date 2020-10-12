@@ -8,8 +8,8 @@ commands:
 
 .. code-block:: sh
 
-   (project) $ rr-data 'datapath/'
-   (project) $ rr-paper 'datapath/csh101/csh101.ann.features.csv' 'output/'
+   $ rr-data 'datapath/'
+   $ rr-paper 'datapath/csh101/csh101.ann.features.csv' 'output/'
 
 
 For your reference, the paper tables are repeated below, so you can check the
@@ -23,7 +23,7 @@ It is possible to perform human activity recognition using data from continuous 
 Dataset
 -------
 
-The dataset that was used for this project is the UCI ML Repository's Human Activity Recognition from Continuous Ambient Sensor Data Data Set [dua2019]_ [cook2012]_
+The dataset that was used for this project is the UCI ML Repository's Human Activity Recognition from Continuous Ambient Sensor Data Data Set [dua2019]_ [cook2012]_.
 It represents ambient data collected in 30 homes with volunteer residents.
 Data are collected continuously while residents perform their normal routines.
 It contains 36 features measured plus one output for the classification label of the activity, for
